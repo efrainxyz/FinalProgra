@@ -29,6 +29,7 @@
 						 		<th style="text-align: center;" valign="middle">Marca de Auto</th>
 						 		<th style="text-align: center;" valign="middle">Modelo de Auto</th>
 						 		<th style="text-align: center;" valign="middle">Transmisión</th>
+						 		<th style="text-align: center;" valign="middle">Tipo de Viaje</th>
 						 		<th style="text-align: center;" valign="middle">Combustible</th>
 						 		<th style="text-align: center;" valign="middle">Número de pasajeros</th>
 						 		<th style="text-align: center;" valign="middle">Número de puertas</th>
@@ -43,9 +44,10 @@
 	        				<c:forEach var="listarjsp" items="${listarjsp}">
 			 				<tr>
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.matricula}</td>
-								<td style="text-align: center; vertical-align:middle;">Subaru</td>
-		 						<td style="text-align: center; vertical-align:middle;">XV 2.0</td>
+								<td style="text-align: center; vertical-align:middle;">${listarjsp.modeloAuto.marcaAuto.marca}</td>
+		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.modeloAuto.modelo}</td>
 		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.transmisionAutoId}</td>
+		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.tipoViajeAuto.tipo}</td>
 		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.combustibleAuto}</td>
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.nroPasajeros}</td>
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.nroPuertas}</td>

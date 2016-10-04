@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="progra2">
+		<class>proyectofinal.progra2.bean.Alquiler</class>
+		<class>proyectofinal.progra2.bean.Alquilerxrequerimiento</class>
+		<class>proyectofinal.progra2.bean.AlquilerxrequerimientoPK</class>
+		<class>proyectofinal.progra2.bean.Auto</class>
+		<class>proyectofinal.progra2.bean.Consulta</class>
+		<class>proyectofinal.progra2.bean.Departamento</class>
+		<class>proyectofinal.progra2.bean.Distrito</class>
+		<class>proyectofinal.progra2.bean.MarcaAuto</class>
+		<class>proyectofinal.progra2.bean.ModeloAuto</class>
+		<class>proyectofinal.progra2.bean.Persona</class>
+		<class>proyectofinal.progra2.bean.Provincia</class>
+		<class>proyectofinal.progra2.bean.RequerimientoEspecial</class>
+		<class>proyectofinal.progra2.bean.Rol</class>
+		<class>proyectofinal.progra2.bean.Sede</class>
+		<class>proyectofinal.progra2.bean.Tarjeta</class>
+		<class>proyectofinal.progra2.bean.TarjetaPK</class>
+		<class>proyectofinal.progra2.bean.TipoTarjeta</class>
+		<class>proyectofinal.progra2.bean.TipoViajeAuto</class>
+		<properties> 
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/> 
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/programacion2"/>
+ 			<property name="javax.persistence.jdbc.user" value="root"/> 
+ 			<property name="javax.persistence.jdbc.password" value=""/>
+ 			<property name="eclipselink.logging.level" value="FINE"/>         
+		</properties>
+	</persistence-unit>
+</persistence>

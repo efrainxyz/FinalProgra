@@ -22,10 +22,12 @@ public class autoDao implements autoInterfaz{
 		try {
 			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
 			EntityManager em= emf.createEntityManager();
-			TypedQuery<Auto> query=em.createQuery("SELECT * FROM Auto a inner join TipoViajeAuto b on b.idTipoViajeAuto = a.tipoViajeAuto inner join ModeloAuto c on c.idModeloAuto = a.modeloAuto inner join MarcaAuto d on d.idMarcaAuto = c.marcaAuto",Auto.class);
+			
+			TypedQuery<Auto> query=em.createQuery("SELECT a FROM Auto a,TipoViajeAuto t,ModeloAuto m,MarcaAuto x WHERE x=m.marcaAuto and t=a.tipoViajeAuto and m=a.modeloAuto",Auto.class);
 			listar= query.getResultList();
 		} catch (Exception e) {
-		 System.out.println("problema en el dao auto listar"+e.getMessage());
+		 System.out.println("problema en el dao auto listar  "+e.getMessage());
+		 e.printStackTrace();
 		}
 		
 		return listar;
