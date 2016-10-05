@@ -1,20 +1,9 @@
-<%@page import="proyectofinal.progra2.bean.Persona"%>
-<%@page import="org.springframework.web.servlet.ModelAndView"%>
-<%@page import="org.springframework.ui.Model"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>  
 
-<%Persona user=(Persona) session.getAttribute("usuario");
-    if(user==null){
-		System.out.println("TAMAAAAAAAAAAAAÑOOO "+user);
-		request.getRequestDispatcher("home").forward(request, response);
-	}else{System.out.println("TAMAAAAAAAAAAAAÑOOO sinoooo "+user);
-    %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
-<jsp:include page="Administrador_head.jsp" flush="true"/>
+<jsp:include page="Publico_head.jsp" flush="true"/>
 
 <body>
 
@@ -23,6 +12,7 @@
         <div id="content">
 
             <div class="container">
+          
                 <div class="col-md-12">
                     <div id="main-slider">
                         <div class="item">
@@ -48,7 +38,8 @@
                 <div class="box">
                     <div class="container">
                         <div class="col-md-12">
-                            <h2>Compañias de prestigio. Amplia gama de coches. ¡Grandes descuentos!</h2>
+                        <c:if test="${ not empty mensaje }"></c:if>
+                            <h2>${mensaje}</h2>
                         </div>
                     </div>
                 </div>
@@ -229,7 +220,7 @@
 
         </div>
     
-	<jsp:include page="Administrador_footer.jsp" flush="true"/>
+	<jsp:include page="Publico_footer.jsp" flush="true"/>
 
 
     </div>
@@ -247,5 +238,3 @@
 </body>
 
 </html>
-
-<%}%>

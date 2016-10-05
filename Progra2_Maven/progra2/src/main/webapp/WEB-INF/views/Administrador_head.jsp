@@ -1,7 +1,12 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="proyectofinal.progra2.bean.Persona"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>  
+    <%Persona user=(Persona) session.getAttribute("usuario");
+    	
+    %>
 <head>
 
     <meta charset="utf-8">
@@ -44,8 +49,8 @@
             </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                    <li><h4 style="color:white;font-size:14px;">Bienvenido: </h4></li>
-                    <li><a href="<%=request.getContextPath()%>/Logout">Cerrar Sesión</a>
+                    <li><h4 style="color:white;font-size:14px;">Bienvenido: <%=user.getRol().getNombre()%></h4></li>
+                    <li><a href="Logout">Cerrar Sesión</a>
                     </li>
                 </ul>
             </div>
@@ -58,7 +63,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="Administrador_paginaprincipal.jsp" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="homeAdministrador" data-animate-hover="bounce">
                     <img src="<%=request.getContextPath()%>/resources/img/logo.png" alt="Obaju logo" class="hidden-xs">
                     <img src="<%=request.getContextPath()%>/resources/img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju </span>
                 </a>
@@ -74,7 +79,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a href="<%=request.getContextPath() %>Administrador_mantenerauto.jsp">Mantener Auto</a></li>
+                    <li><a href="listarAuto">Mantener Auto</a></li>
                   	<li><a href="<%=request.getContextPath() %>Administrador_registrarpago.jsp">Registrar Pago</a>
                       
                     </li>

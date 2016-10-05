@@ -1,6 +1,7 @@
 package proyectofinal.progra2.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,39 +13,38 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import proyectofinal.progra2.bean.Auto;
+
 import proyectofinal.progra2.bean.Persona;
-import proyectofinal.progra2.dao.autoDao;
+import proyectofinal.progra2.dao.personaDao;
 
 @Controller
-public class autoController {
+public class VistasController {
 	
-	@Autowired
-	private autoDao dao;
+	
 
-	@RequestMapping(value="/listarAuto")
-	public ModelAndView listarAuto(HttpServletResponse response,HttpServletRequest request) throws IOException{
-		ModelAndView model=new ModelAndView();
+	@RequestMapping(value="/")
+	public ModelAndView test(HttpServletResponse response) throws IOException{
+		return new ModelAndView("Publico_paginaprincipal");
+	}
 		
+	
+	@RequestMapping(value="/homeAdministrador")
+	public ModelAndView logout(HttpServletResponse response,HttpServletRequest request) throws IOException{
+		ModelAndView model = new ModelAndView();
 		HttpSession session=request.getSession();
 		Persona user=(Persona) session.getAttribute("usuario");
 			if(user!=null){
 				if(user.getRol().getNombre().equals("administrador")){
-					try {
-						List<Auto> listar= dao.listarAutos();
-						model.addObject("listarjsp", listar);
-						model.setViewName("Administrador_mantenerauto");
-					
-					} catch (Exception e) {
-						 System.out.println("problema en el controller auto listar"+e.getMessage());
-					}
+					model.setViewName("Administrador_paginaprincipal");	
 				}
 			}else{
 				model.addObject("mensaje","Su sesion ha expirado, intente de nuevo.");
 				model.setViewName("Publico_paginaprincipal");
 			}
-		
-		
-		return model;
+		return  model;
 	}
 }
+
+
+
+
