@@ -27,7 +27,7 @@
 	                                <div class="form-group">
 		                                <label for="usuario">DNI (*)</label>
 		                                <input type="number" class="form-control" name="dni" id="dni" placeholder="Ingrese su DNI (usuario)">
-		                                <input type="hidden" name="idRol" id="rol" value="2">
+		                               
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -39,7 +39,7 @@
                                 <div class="col-sm-6">
 	                                <div class="form-group">
 		                                <label for="contra2">Repita su contraseña (*)</label>
-		                                <input type="password" class="form-control" name="contrasena" id="contrasena" maxlength="15" placeholder="Ingrese su contraseña">
+		                                <input type="password" class="form-control"  id="contrasena2" maxlength="15" placeholder="Ingrese su contraseña">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -72,10 +72,7 @@
                             </div>
                             <br>
                             <div class="row">
-                            <c:if test="${not empty mensaje }">
-                            	 <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar1">${mensaje}</div>
-		                 	
-                            </c:if>
+                            
                             <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar1">Por favor complete todos los campos.</div>
 		                 	<div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar2">Las contraseñas escritas no coinciden.</div>
 		                 	<div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar3">El DNI tiene que tener 8 carácteres. Ejemplo:75228582.</div>
@@ -112,6 +109,12 @@
 							</script>
 	
                         </form>
+                        <div class="row">
+                        	<c:if test="${not empty mensaje }">
+                            	 <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar1">${mensaje}</div>
+		                 	
+                            </c:if>
+                        </div>
                     </div>
                 </div>
 			</div>

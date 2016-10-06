@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
+
 import proyectofinal.progra2.bean.Persona;
+import proyectofinal.progra2.bean.Rol;
 import proyectofinal.progra2.dao.personaDao;
 
 @Controller
@@ -89,27 +91,38 @@ public class PersonaController {
 	@RequestMapping(value="/registroCliente")
 	public ModelAndView registroCliente(HttpServletResponse response,HttpServletRequest request,Persona bean) throws IOException{
 		ModelAndView model = new ModelAndView();
+		//CUANDO SE DESEE AGREGAR UN MANY TO ONE  <- CUANDO LO BEAN EN EL BEAN DONDE QUIEREN HACER EL INSERT
+		//PRIMERO OBTENIENE LOS VALORES DEL ROL QUE SOLO ENTRARAN A UN BEAN TIPO ROL
+		// LUEGO QUE SE SETEA LOS VALORES AL BEAN TIPO ROL
+		//AL "BEAN" TIPO PERSONA QUE ESTA INGRESANDO EN ESTE CONTRALADOR.
+		//SE LE SETEA EL ROL , COMO PUEDEN VER SOLO ADMITE VALORES TIPO ROL.
+		// PERO COMO YA TENEMOS NUESTRO BEAN TIPO ROL CREADO Y CON LOS VALORES AGREGADOS
+		// SE LE MANDA :) FIN
+		Rol beanR = new Rol();
+		beanR.setIdRol(2);
+		bean.setRol(beanR);
+		
 		try {
 			int existeCorreo=dao.buscarCorreo(bean.getCorreo());
 			
-			if(existeCorreo!=0){
+			if(existeCorreo!=1){
 				System.out.println("EL CORREO ESTA BIEEN");
 				int respuesta=dao.RegistrarPersona(bean);
 				if(respuesta!=0){
 					
 					System.out.println("SE REGISTRO BIEEEN");
 					model.addObject("mensaje","Ha sido registrado satisfactoriamente.");
-					model.setViewName("Publico_registarcliente");
+					model.setViewName("/publico/Publico_registarcliente");
 				}else{
 					System.out.println("NO SE REGISTROOOO");
 					model.addObject("mensaje","Parace que el DNI ya ha sido registrado.");
-					model.setViewName("Publico_registarcliente");
+					model.setViewName("/publico/Publico_registarcliente");
 				}
 				
 			}else{
 				System.out.println("EL CORREO EXISSSTEEEE");
 				model.addObject("Parece que el correo ya esta registrado.");
-				model.setViewName("Publico_registarcliente");
+				model.setViewName("publico/Publico_registarcliente");
 			}
 			
 		} catch (Exception e) {
@@ -119,7 +132,9 @@ public class PersonaController {
 	}
 	
 	
+	
 }
+
 
 
 
