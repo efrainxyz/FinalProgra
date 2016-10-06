@@ -46,9 +46,9 @@
                 <ul class="menu">
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Iniciar Sesión</a>
                     </li>
-                    <li><a href="<%=request.getContextPath() %>/publico/Publico_registarcliente.jsp">Registrarse</a>
+                    <li><a href="registrarse">Registrarse</a>
                     </li>
-                    <li><a href="<%=request.getContextPath() %>/publico/Publico_contactenos.jsp">Contactenos</a>
+                    <li><a href="contactenos">Contactenos</a>
                     </li>
                 </ul>
             </div>
@@ -112,7 +112,7 @@
                     <li class=""><a href="<%=request.getContextPath()%>/publico/Publico_paginaprincipal.jsp">Inicio</a>
                     </li>
                     <li class="nav navbar-nav navbar-left">
-                        <a href="<%=request.getContextPath()%>/publico/Publico_nosotros.jsp">Nosotros</a>
+                        <a href="nosotros">Nosotros</a>
                     </li>
                     <li class="nav navbar-nav navbar-left">
                         <a href="<%=request.getContextPath()%>/publico/Publico_catalogodeproductos.jsp">Vehiculos</a>

@@ -12,7 +12,9 @@
         <div id="content">
 
             <div class="container">
-          
+              <c:if test="${not empty mensaje }">
+          		<div class="col-sm-12 form-group alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${mensaje}</div>
+              </c:if> 
                 <div class="col-md-12">
                     <div id="main-slider">
                         <div class="item">
@@ -39,7 +41,7 @@
                     <div class="container">
                         <div class="col-md-12">
                         <c:if test="${ not empty mensaje }"></c:if>
-                            <h2>${mensaje}</h2>
+                            <h2>Compañias de prestigio. Amplia gama de coches. ¡Grandes descuentos!</h2>
                         </div>
                     </div>
                 </div>

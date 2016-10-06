@@ -27,7 +27,7 @@ public class VistasController {
 		return new ModelAndView("Publico_paginaprincipal");
 	}
 		
-	
+	//---------------------->>>>>>>>>>>> VISTAS DE ADMINISTRADOR 
 	@RequestMapping(value="/homeAdministrador")
 	public ModelAndView logout(HttpServletResponse response,HttpServletRequest request) throws IOException{
 		ModelAndView model = new ModelAndView();
@@ -43,6 +43,24 @@ public class VistasController {
 			}
 		return  model;
 	}
+	
+	
+	// ------------------>>>>>>>> VISTAS DE PUBLICO
+	@RequestMapping(value="/nosotros")
+	public ModelAndView nosotros(HttpServletResponse response) throws IOException{
+		return new ModelAndView("Publico_nosotros");
+	}
+	
+	@RequestMapping(value="/contactenos")
+	public ModelAndView contactenos(HttpServletResponse response) throws IOException{
+		return new ModelAndView("Publico_contactenos");
+	}
+	
+	@RequestMapping(value="/registrarse")
+	public ModelAndView registrarse(HttpServletResponse response) throws IOException{
+		return new ModelAndView("Publico_registrarcliente");
+	}
+	
 }
 
 
