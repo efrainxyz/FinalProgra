@@ -82,6 +82,41 @@ public class PersonaController {
 		}
 		return  model;
 	}
+	
+	
+	@RequestMapping(value="/registroCliente")
+	public ModelAndView registroCliente(HttpServletResponse response,HttpServletRequest request,Persona bean) throws IOException{
+		ModelAndView model = new ModelAndView();
+		try {
+			int existeCorreo=dao.buscarCorreo(bean.getCorreo());
+			
+			if(existeCorreo!=0){
+				System.out.println("EL CORREO ESTA BIEEN");
+				int respuesta=dao.RegistrarPersona(bean);
+				if(respuesta!=0){
+					
+					System.out.println("SE REGISTRO BIEEEN");
+					model.addObject("mensaje","Ha sido registrado satisfactoriamente.");
+					model.setViewName("Publico_registarcliente");
+				}else{
+					System.out.println("NO SE REGISTROOOO");
+					model.addObject("mensaje","Parace que el DNI ya ha sido registrado.");
+					model.setViewName("Publico_registarcliente");
+				}
+				
+			}else{
+				System.out.println("EL CORREO EXISSSTEEEE");
+				model.addObject("Parece que el correo ya esta registrado.");
+				model.setViewName("Publico_registarcliente");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("REGISTRO CLIENTE"  + e.getMessage());
+		}
+		return  model;
+	}
+	
+	
 }
 
 

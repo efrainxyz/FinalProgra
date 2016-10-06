@@ -58,14 +58,36 @@ public class autoDao implements I_Auto{
 
 	@Override
 	public List<Sede> listarSede() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Sede>listar=new ArrayList<Sede>();
+		try {
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em= emf.createEntityManager();
+			
+			TypedQuery<Sede> query=em.createQuery("SELECT a FROM Sede a",Sede.class);
+			listar= query.getResultList();
+		} catch (Exception e) {
+		 System.out.println("problema en el dao auto listar  "+e.getMessage());
+		 e.printStackTrace();
+		}
+		
+		return listar;
 	}
 
 	@Override
 	public List<TipoViajeAuto> listarTipoviajeauto() {
-		// TODO Auto-generated method stub
-		return null;
+		List<TipoViajeAuto>listar=new ArrayList<TipoViajeAuto>();
+		try {
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em= emf.createEntityManager();
+			
+			TypedQuery<TipoViajeAuto> query=em.createQuery("SELECT a FROM TipoViajeAuto a",TipoViajeAuto.class);
+			listar= query.getResultList();
+		} catch (Exception e) {
+		 System.out.println("problema en el dao auto listar  "+e.getMessage());
+		 e.printStackTrace();
+		}
+		
+		return listar;
 	}
 
 	@Override

@@ -43,5 +43,40 @@ public class personaDao implements I_Persona {
 		return persona;
 	}
 
+	@Override
+	public int RegistrarPersona(Persona bean) throws Exception {
+		int respuesta=0;
+			try {
+				EntityManagerFactory emf=Persistence.createEntityManagerFactory("progra2");
+				EntityManager em=emf.createEntityManager();
+				em.getTransaction().begin();
+				em.persist(bean);
+				em.getTransaction().commit();
+				respuesta=1;
+				em.close();
+ 				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		
+		return respuesta;
+	}
+
+	@Override
+	public int buscarCorreo(String correo) {
+		int respuesta=0;
+			try {
+				EntityManagerFactory emf=Persistence.createEntityManagerFactory("progra2");
+				EntityManager em=emf.createEntityManager();
+				TypedQuery<Persona> sql=em.createQuery("Select p From Persona p Where p.correo = :valor1",Persona.class);
+				sql.setParameter("valor1",correo);
+				
+			} catch (Exception e) {
+				System.out.print("ERROR AL BUSCAR CORREO "+e.getMessage());
+			}
+		
+		return respuesta;
+	}
+
 	
 }

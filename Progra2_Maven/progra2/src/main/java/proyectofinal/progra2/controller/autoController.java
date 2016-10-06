@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proyectofinal.progra2.bean.Auto;
+import proyectofinal.progra2.bean.MarcaAuto;
+import proyectofinal.progra2.bean.ModeloAuto;
 import proyectofinal.progra2.bean.Persona;
+import proyectofinal.progra2.bean.Sede;
+import proyectofinal.progra2.bean.TipoViajeAuto;
 import proyectofinal.progra2.dao.autoDao;
 
 @Controller
@@ -59,10 +63,10 @@ public class autoController {
 					int respuesta=dao.agregarAuto(auto);
 					
 					List<Auto> listar= dao.listarAutos();
+					
 					if(respuesta!=1)
 					{
 						model.addObject("mensaje","no se agrego");
-					
 						model.setViewName("Administrador_agregarauto");
 					}else{
 						model.addObject("mensaje","se agrego");
@@ -73,7 +77,13 @@ public class autoController {
 				}
 			else if(accion.equals("preagregar"))
 				{
-					model.setViewName("Administrador_agregarauto");
+				List<TipoViajeAuto>listar1=dao.listarTipoviajeauto();
+				List<MarcaAuto>listar2=dao.listarMarcaauto();
+				List<Sede>listar3=dao.listarSede();	
+				model.addObject("listartipoviaje",listar1);
+				model.addObject("listarmarcaauto",listar2);
+				model.addObject("listarsede",listar3);
+				model.setViewName("Administrador_agregarauto");
 				}
 			
 		} catch (Exception e) {
@@ -82,7 +92,21 @@ public class autoController {
 		
 		return model;
 	}
-	
+	@RequestMapping(value="/listarMarcaAuto")
+	public ModelAndView listarmarcar(HttpServletResponse response, int idmarca) throws IOException{
+		ModelAndView model = new ModelAndView();
+		try {
+					List<ModeloAuto> listar1=dao.listarModeloAuto(idmarca);
+						model.addObject("listarmodeloauto",listar1);
+						model.setViewName("Administrador_agregarauto");
+
+			
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+		
+		return model;
+	}
 	
 	
 }

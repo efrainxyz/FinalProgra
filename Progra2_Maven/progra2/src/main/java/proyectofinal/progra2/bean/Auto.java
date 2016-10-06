@@ -39,8 +39,7 @@ public class Auto implements Serializable {
 	@Column(name="precio_dia")
 	private BigDecimal precioDia;
 
-	@Column(name="transmision_auto_id")
-	private String transmisionAutoId;
+	private String transmision;
 
 	private int year;
 
@@ -145,12 +144,12 @@ public class Auto implements Serializable {
 		this.precioDia = precioDia;
 	}
 
-	public String getTransmisionAutoId() {
-		return this.transmisionAutoId;
+	public String getTransmision() {
+		return this.transmision;
 	}
 
-	public void setTransmisionAutoId(String transmisionAutoId) {
-		this.transmisionAutoId = transmisionAutoId;
+	public void setTransmision(String transmision) {
+		this.transmision = transmision;
 	}
 
 	public int getYear() {

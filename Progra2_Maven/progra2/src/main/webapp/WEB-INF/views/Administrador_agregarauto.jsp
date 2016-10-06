@@ -37,50 +37,61 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nro_pasajero">Número de pasajeros</label>
-                                    <input type="number" class="form-control" id="nro_pasajero" name="nro_pasajero" min="1" max="99" placeholder="Ingrese el número de pasajeros">
+                                    <input type="number" class="form-control" id="nro_pasajero" name="nroPasajero" min="1" max="99" placeholder="Ingrese el número de pasajeros">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nro_puertas">Número de puertas</label>
-                                    <input type="number" class="form-control" id="nro_puertas" name="nro_puertas" min="1" max="9" placeholder="Ingrese el número de puertas">
+                                    <input type="number" class="form-control" id="nro_puertas" name="nroPuertas" min="1" max="9" placeholder="Ingrese el número de puertas">
                                 </div>
                             </div> 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="aire_acon">¿Tiene Aire Acondicionado?</label>
-                                    <select class="form-control" id="aire_acon" name="aire_acon">
-                                        <option>Sí</option>
-                                        <option>No</option>
+                                    <select class="form-control" id="aire_acon" name="aireacondicionado">
+                                        <option value="si">Sí</option>
+                                        <option value="no">No</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="precio_dia">Precio por día</label>
-                                    <input type="text" class="form-control" id="precio_dia" name="precio_dia" maxlength="45" placeholder="Ejemplo: S/. 85.20">
+                                    <input type="text" class="form-control" id="precio_dia" name="precioDia" maxlength="45" placeholder="Ejemplo: S/. 85.20">
                                 </div>
                             </div> 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="ubicacion">Ubicación del auto (Sede)</label>
-                                    <select class="form-control" id="ubicacion" name="ubicacion">
+                                   
+                                    <select class="form-control" id="sede" name="sede">
                                         <option>Seleccione</option>
+                                        <c:if test="${not empty listarsede}">
+		        							<c:forEach var="listarsede" items="${listarsede}">
+	               		 						<option value="${listarsede.idSede}">${listarsede.sede}</option>	        		
+								        	</c:forEach>
+							        	</c:if>
                                     </select>
+                                   
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="marca_auto">Marca de Auto</label>
-                                    <select class="form-control" id="marca_auto" name="marca_auto">
-                                        <option>Seleccione</option>
+                                    <select class="form-control" id="marca_auto" >
+                                        <c:if test="${not empty listarmarcaauto}">
+		        							<c:forEach var="listarmarcaauto" items="${listarmarcaauto}">
+	               		 						<option>${listarmarcaauto.marca}</option>	        		
+								        	</c:forEach>
+							        	</c:if>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="modelo_auto">Modelo de Auto</label>
-                                    <select class="form-control" id="modelo_auto" name="modelo_auto">
+                                    <select class="form-control" id="modelo_auto" name="modeloAuto">
                                         <option>Seleccione</option>
                                     </select>
                                 </div>
@@ -88,23 +99,29 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="categoria_auto">Categoría de Auto</label>
-                                    <select class="form-control" id="categoria_auto" name="categoria_auto">
-                                        <option>Seleccione</option>
+                                  	<select class="form-control" id="aire_acon" name="categoriaAuto">
+                                        <option value="auto">Auto</option>
+                                        <option value="camioneta">Camioneta</option>
+                                        <option value="vans">Vans</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="tipo_viaje">Tipo de Viaje</label>
-                                    <select class="form-control" id="tipo_viaje" name="tipo_viaje">
-                                        <option>Seleccione</option>
+                                    <select class="form-control" id="tipo_viaje" name="tipoViajeAuto">
+                                       <c:if test="${not empty listartipoviaje}">
+		        							<c:forEach var="listartipoviaje" items="${listartipoviaje}">
+	               		 						<option>${listartipoviaje.tipo}</option>	        		
+								        	</c:forEach>
+							        	</c:if>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="transmision">Transmisión</label>
-                                    <select class="form-control" id="transmision" name="transmision">
+                                    <select class="form-control" id="transmision" name="transmisionAutoId">
                                         <option>Seleccione</option>
                                     </select>
                                 </div>

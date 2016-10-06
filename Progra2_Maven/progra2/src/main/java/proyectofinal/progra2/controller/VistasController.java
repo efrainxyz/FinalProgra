@@ -54,7 +54,7 @@ public class VistasController {
 	
 	@RequestMapping(value="/registrarse")
 	public ModelAndView registrarse(HttpServletResponse response) throws IOException{
-		return new ModelAndView("Publico_registrarcliente");
+		return new ModelAndView("Publico_registarcliente");
 	}
 	
 	@RequestMapping(value="/catalogo")

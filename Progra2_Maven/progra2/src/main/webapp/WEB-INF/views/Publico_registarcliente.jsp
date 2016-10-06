@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <body>
     <jsp:include page="Publico_head.jsp" flush="true"/>
@@ -20,24 +21,25 @@
 
                         <hr>
 
-                        <form id="form" name="form" method="post" action="#">
+                        <form id="form" name="form" action="registroCliente"  method="post" >
                         	<div class="row">
                         		<div class="col-sm-6">
 	                                <div class="form-group">
 		                                <label for="usuario">DNI (*)</label>
-		                                <input type="number" class="form-control" name="usuario" id="usuario" placeholder="Ingrese su DNI (usuario)">
+		                                <input type="number" class="form-control" name="dni" id="dni" placeholder="Ingrese su DNI (usuario)">
+		                                <input type="hidden" name="idRol" id="rol" value="2">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
 	                                <div class="form-group">
 		                                <label for="contra1">Contraseña (*)</label>
-		                                <input type="password" class="form-control" name="contra1" id="contra1" maxlength="15" placeholder="Ingrese su contraseña">
+		                                <input type="password" class="form-control" name="contrasena" id="contrasena" maxlength="15" placeholder="Ingrese su contraseña">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
 	                                <div class="form-group">
 		                                <label for="contra2">Repita su contraseña (*)</label>
-		                                <input type="password" class="form-control" name="contra2" id="contra2" maxlength="15" placeholder="Ingrese su contraseña">
+		                                <input type="password" class="form-control" name="contrasena" id="contrasena" maxlength="15" placeholder="Ingrese su contraseña">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -49,13 +51,13 @@
                                 <div class="col-sm-6">
                                 	<div class="form-group">
 		                                <label for="apePat">Apellido Paterno (*)</label>
-		                                <input type="text" class="form-control" name="apePat" id="apePat" maxlength="45" placeholder="Ingrese su apellido paterno">
+		                                <input type="text" class="form-control" name="apellidoPaterno" id="apePat" maxlength="45" placeholder="Ingrese su apellido paterno">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
                                 	<div class="form-group">
 		                                <label for="apeMat">Apellido Materno (*)</label>
-		                                <input type="text" class="form-control" name="apeMat" id="apeMat" maxlength="45" placeholder="Ingrese su apellido materno">
+		                                <input type="text" class="form-control" name="apellidoMaterno" id="apeMat" maxlength="45" placeholder="Ingrese su apellido materno">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -70,6 +72,10 @@
                             </div>
                             <br>
                             <div class="row">
+                            <c:if test="${not empty mensaje }">
+                            	 <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar1">${mensaje}</div>
+		                 	
+                            </c:if>
                             <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar1">Por favor complete todos los campos.</div>
 		                 	<div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar2">Las contraseñas escritas no coinciden.</div>
 		                 	<div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar3">El DNI tiene que tener 8 carácteres. Ejemplo:75228582.</div>
@@ -114,14 +120,14 @@
       <jsp:include page="Publico_footer.jsp" flush="true"/>
 
     </div>
-	<script src="<%=request.getContextPath() %>/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery.cookie.js"></script>
-    <script src="<%=request.getContextPath() %>/js/waypoints.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/modernizr.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap-hover-dropdown.js"></script>
-    <script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/front.js"></script>
+	<script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/jquery.cookie.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/waypoints.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/modernizr.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap-hover-dropdown.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/front.js"></script>
     
 
 </body>

@@ -46,7 +46,7 @@
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.matricula}</td>
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.modeloAuto.marcaAuto.marca}</td>
 		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.modeloAuto.modelo}</td>
-		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.transmisionAutoId}</td>
+		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.transmision}</td>
 		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.tipoViajeAuto.tipo}</td>
 		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.combustibleAuto}</td>
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.nroPasajeros}</td>
@@ -59,7 +59,7 @@
 	        			</c:if>
 				 		</tbody>
 				 	
-					</table>
+					</table>	
 	  				<br>
 	  				<button class="btn-large btn btn-primary" onclick="location.href='agregarAuto?accion=preagregar'">Agregar Auto</button>
 	               					
