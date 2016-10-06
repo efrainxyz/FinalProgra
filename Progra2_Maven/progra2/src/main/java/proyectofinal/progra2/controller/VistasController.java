@@ -1,21 +1,17 @@
 package proyectofinal.progra2.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
 import proyectofinal.progra2.bean.Persona;
-import proyectofinal.progra2.dao.personaDao;
 
 @Controller
 public class VistasController {
@@ -60,9 +56,10 @@ public class VistasController {
 	public ModelAndView registrarse(HttpServletResponse response) throws IOException{
 		return new ModelAndView("Publico_registrarcliente");
 	}
-	@RequestMapping(value="/inicio")
-	public ModelAndView inicio(HttpServletResponse response) throws IOException{
-		return new ModelAndView("Publico_paginaprincipal");
+	
+	@RequestMapping(value="/catalogo")
+	public ModelAndView catalogo(HttpServletResponse response) throws IOException{
+		return new ModelAndView("Publico_catalogodeproductos");
 	}
 	
 }
