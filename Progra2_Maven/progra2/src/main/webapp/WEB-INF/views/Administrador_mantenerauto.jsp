@@ -61,7 +61,7 @@
 				 	
 					</table>
 	  				<br>
-	  				<button class="btn-large btn btn-primary" onclick="location.href='Administrador_agregarauto.jsp'">Agregar Auto</button>
+	  				<button class="btn-large btn btn-primary" onclick="location.href='agregarAuto?accion=preagregar'">Agregar Auto</button>
 	               					
 					
               		</div>

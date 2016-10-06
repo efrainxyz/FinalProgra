@@ -91,7 +91,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="<%=request.getContextPath()%>/publico/Publico_paginaprincipal.jsp" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="inicio" data-animate-hover="bounce">
                     <img src="<%=request.getContextPath()%>/resources/img/logo.png" alt="Obaju logo" class="hidden-xs">
                     <img src="<%=request.getContextPath()%>/resources/img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju </span>
                 </a>
@@ -109,7 +109,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class=""><a href="<%=request.getContextPath()%>/publico/Publico_paginaprincipal.jsp">Inicio</a>
+                    <li class=""><a href="inicio">Inicio</a>
                     </li>
                     <li class="nav navbar-nav navbar-left">
                         <a href="nosotros">Nosotros</a>

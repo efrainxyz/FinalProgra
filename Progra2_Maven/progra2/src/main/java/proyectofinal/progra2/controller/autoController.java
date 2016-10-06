@@ -47,4 +47,42 @@ public class autoController {
 		
 		return model;
 	}
+	
+	@RequestMapping(value="/agregarAuto")
+	public ModelAndView agregar(HttpServletResponse response,Auto auto, String accion) throws IOException{
+		ModelAndView model = new ModelAndView();
+		try {
+			
+			if(accion.equals("agregar"))
+				{
+					
+					int respuesta=dao.agregarAuto(auto);
+					
+					List<Auto> listar= dao.listarAutos();
+					if(respuesta!=1)
+					{
+						model.addObject("mensaje","no se agrego");
+					
+						model.setViewName("Administrador_agregarauto");
+					}else{
+						model.addObject("mensaje","se agrego");
+						model.addObject("listarjsp",listar);
+						model.setViewName("Administrador_mantenerauto");
+					}
+					
+				}
+			else if(accion.equals("preagregar"))
+				{
+					model.setViewName("Administrador_agregarauto");
+				}
+			
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+		
+		return model;
+	}
+	
+	
+	
 }

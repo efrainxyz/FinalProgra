@@ -60,6 +60,10 @@ public class VistasController {
 	public ModelAndView registrarse(HttpServletResponse response) throws IOException{
 		return new ModelAndView("Publico_registrarcliente");
 	}
+	@RequestMapping(value="/inicio")
+	public ModelAndView inicio(HttpServletResponse response) throws IOException{
+		return new ModelAndView("Publico_paginaprincipal");
+	}
 	
 }
 
