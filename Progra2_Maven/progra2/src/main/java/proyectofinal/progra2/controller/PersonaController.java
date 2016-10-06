@@ -22,6 +22,8 @@ public class PersonaController {
 	
 	@Autowired
 	private personaDao dao;
+	@Autowired
+	VistasController vistas;
 	
 	
 	@RequestMapping(value="/iniciarSesion")
@@ -33,7 +35,7 @@ public class PersonaController {
 			String contrasena= request.getParameter("contrasena");
 			if(dni.equals("")||contrasena.equals("")){
 				model.addObject("mensaje","Debe llenar todos los campos, intente de nuevo.");
-				model.setViewName("Publico_paginaprincipal");
+				model.setViewName("/publico/Publico_paginaprincipal");
 			}else{
 				
 				
@@ -45,13 +47,13 @@ public class PersonaController {
 						session.setAttribute("usuario",ses);
 						System.out.println("ROOOOOOOOOOOOL !!!!!!!!!  "+ses.getRol().getNombre());
 						if(ses.getRol().getNombre().equals("administrador")){
-								model.setViewName("Administrador_paginaprincipal");
+							return vistas.inicioAdm(response);
 						}else if(ses.getRol().getNombre().equals("cliente")){
-							model.setViewName("Cliente_paginaprincipal");
+							return vistas.inicioCli(response);
 						}
 					}else{
 						model.addObject("mensaje", "Los datos ingresados son incorrectos.");
-						model.setViewName("Publico_paginaprincipal");
+						model.setViewName("/publico/Publico_paginaprincipal");
 					}
 				
 			}
@@ -75,7 +77,7 @@ public class PersonaController {
 			}
 			session.removeAttribute("usuario");
 			session.invalidate();
-			model.setViewName("Publico_paginaprincipal");
+			model.setViewName("/publico/Publico_paginaprincipal");
 			
 		} catch (Exception e) {
 			System.out.println("ERROR LOGOUT"  + e.getMessage());
