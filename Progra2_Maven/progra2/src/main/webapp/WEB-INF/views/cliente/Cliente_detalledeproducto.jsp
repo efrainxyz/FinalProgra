@@ -20,10 +20,10 @@
                         <div class="col-sm-4">
                         	<div class="box">
 	                            <div id="mainImage" >
-	                                <img src="<%=request.getContextPath() %>/img/audi_rzero1.jpg" alt="" class="img-responsive">
+	                                <img src="<%=request.getContextPath() %>/resources/img/audi_rzero1.jpg" alt="" class="img-responsive">
 	                            </div>
 								<hr>
-								<a href="Cliente_generarreserva1.jsp" class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Reservar</a>
+								<a href="reserva1" class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Reservar</a>
 									                           
 							</div>
                         </div>
@@ -95,19 +95,14 @@
 		<jsp:include page="Cliente_footer.jsp" flush="true"/>
     </div>
   
-    <script src="<%=request.getContextPath() %>/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery.cookie.js"></script>
-    <script src="<%=request.getContextPath() %>/js/waypoints.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/modernizr.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap-hover-dropdown.js"></script>
-    <script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/front.js"></script>
-
-
-
-
-
+    <script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/jquery.cookie.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/waypoints.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/modernizr.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap-hover-dropdown.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/front.js"></script>
 
 </body>
 

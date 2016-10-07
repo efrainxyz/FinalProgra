@@ -26,14 +26,14 @@
 
                             <ul class="nav nav-pills nav-stacked">
                             	<li class="active">
-                                    <a href="Cliente_micuenta.jsp"><i class="fa fa-user"></i>Mi Cuenta</a>
+                                    <a href="micuenta"><i class="fa fa-user"></i>Mi Cuenta</a>
                                 </li>
                                 <li>
-                                    <a href="Cliente_verlistadeorden.jsp"><i class="fa fa-list"></i>Mis Reservas</a>
+                                    <a href="verorden"><i class="fa fa-list"></i>Mis Reservas</a>
                                 </li>
                                
                                 <li>
-                                    <a href=""><i class="fa fa-sign-out"></i>Cerrar Sesión</a>
+                                    <a href="Logout"><i class="fa fa-sign-out"></i>Cerrar Sesión</a>
                                 </li>
                             </ul>
                         </div>
@@ -129,16 +129,14 @@
 
     </div>
 
-    <script src="<%=request.getContextPath()%>/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/jquery.cookie.js"></script>
-    <script src="<%=request.getContextPath()%>/js/waypoints.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/modernizr.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap-hover-dropdown.js"></script>
-    <script src="<%=request.getContextPath()%>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/front.js"></script>
-
-
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.cookie.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/waypoints.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/modernizr.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
 
 </body>
 

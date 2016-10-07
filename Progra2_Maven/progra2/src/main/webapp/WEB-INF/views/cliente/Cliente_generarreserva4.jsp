@@ -28,13 +28,13 @@
                         <form method="post" action="checkout4.html">
                             
                             <ul class="nav nav-pills nav-justified">
-                                <li><a href="<%=request.getContextPath() %>/cliente/Cliente_generarreserva1.jsp"><i class="fa fa-map-marker"></i><br>Recojo y Retorno</a>
+                                <li><a href="reserva1"><i class="fa fa-map-marker"></i><br>Recojo y Retorno</a>
                                 </li>
-                                <li><a href="<%=request.getContextPath() %>/cliente/Cliente_generarreserva2.jsp"><i class="fa fa-truck"></i><br>Vehículos</a>
+                                <li><a href="reserva2"><i class="fa fa-truck"></i><br>Vehículos</a>
                                 </li>
-                                <li><a href="<%=request.getContextPath() %>/cliente/Cliente_generarreserva3.jsp"><i class="fa fa-money"></i><br>Cobertura y Opciones</a>
+                                <li><a href="reserva3"><i class="fa fa-money"></i><br>Cobertura y Opciones</a>
                                 </li>
-                                <li class="active"><a href="<%=request.getContextPath() %>/cliente/Cliente_generarreserva4.jsp"><i class="fa fa-eye"></i><br>Resumen</a>
+                                <li class="active"><a href="reserva4"><i class="fa fa-eye"></i><br>Resumen</a>
                                 </li>
                             </ul>
 
@@ -136,7 +136,7 @@
 
                             <div class="box-footer">
                                 <div class="pull-left">
-                                    <a href="<%=request.getContextPath() %>/cliente/Cliente_generarreserva3.jsp" class="btn btn-default"><i class="fa fa-chevron-left"></i>Regresar a coberturas y opciones</a>
+                                    <a href="reserva3" class="btn btn-default"><i class="fa fa-chevron-left"></i>Regresar a coberturas y opciones</a>
                                 </div>
                                 <div class="pull-right">
                                     <button type="submit" class="btn btn-primary">Reservar<i class="fa fa-chevron-right"></i>
@@ -224,14 +224,14 @@
 
     </div>
 
-    <script src="<%=request.getContextPath()%>/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/jquery.cookie.js"></script>
-    <script src="<%=request.getContextPath()%>/js/waypoints.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/modernizr.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap-hover-dropdown.js"></script>
-    <script src="<%=request.getContextPath()%>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/front.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.cookie.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/waypoints.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/modernizr.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
     <!-- Script para hacerle toggle según el tipo de pago -->
     <script>
 	    $("[name=tipo_pago]").change(function(){

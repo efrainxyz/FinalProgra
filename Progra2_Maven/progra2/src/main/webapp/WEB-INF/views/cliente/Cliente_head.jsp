@@ -22,26 +22,26 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
 
     <!-- styles -->
-    <link href="<%=request.getContextPath()%>/css/font-awesome.css" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/css/animate.min.css" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/css/owl.carousel.css" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/css/owl.theme.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/font-awesome.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/animate.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/owl.carousel.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/owl.theme.css" rel="stylesheet">
 
-    <link href="<%=request.getContextPath()%>/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
 
-    <link href="<%=request.getContextPath()%>/css/custom.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/custom.css" rel="stylesheet">
 
-    <script src="<%=request.getContextPath()%>/js/respond.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/respond.min.js"></script>
 
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/img/favicon.jpg">
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/resources/img/favicon.jpg">
     
     <!--Para datetimepicker-->
-    <link href="<%=request.getContextPath()%>/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <!-- Para el number spinner -->
-    <link href="<%=request.getContextPath()%>/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
 	<!-- Para el slider-->
-    <link href="<%=request.getContextPath()%>/css/slider.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/slider.css" rel="stylesheet">
 
 
 
@@ -68,9 +68,9 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="<%=request.getContextPath()%>/cliente/Cliente_paginaprincipal.jsp" data-animate-hover="bounce">
-                    <img src="<%=request.getContextPath()%>/img/logo.png" alt="Obaju logo" class="hidden-xs">
-                    <img src="<%=request.getContextPath()%>/img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju </span>
+                <a class="navbar-brand home" href="homeCliente" data-animate-hover="bounce">
+                    <img src="<%=request.getContextPath()%>/resources/img/logo.png" alt="Obaju logo" class="hidden-xs">
+                    <img src="<%=request.getContextPath()%>/resources/img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju </span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -84,14 +84,14 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class=""><a href="<%=request.getContextPath()%>/cliente/Cliente_paginaprincipal.jsp">Inicio</a>
+                    <li class=""><a href="inicioCli">Inicio</a>
                     </li>
              
-                    <li class=""><a href="<%=request.getContextPath()%>/cliente/Cliente_catalogodeproductos.jsp">Vehiculos</a>
+                    <li class=""><a href="catalogocli">Vehiculos</a>
                     </li>
-                    <li class=""><a href="<%=request.getContextPath()%>/cliente/Cliente_micuenta.jsp">Mi Cuenta</a>
+                    <li class=""><a href="micuenta">Mi Cuenta</a>
                     </li>
-                    <li class=""><a href="<%=request.getContextPath()%>/cliente/Cliente_generarreserva1.jsp">Reservar</a>
+                    <li class=""><a href="reserva1">Reservar</a>
                     </li>
 
                 </ul>

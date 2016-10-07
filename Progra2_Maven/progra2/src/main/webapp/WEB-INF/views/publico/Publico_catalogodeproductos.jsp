@@ -44,29 +44,29 @@
 	                                                <div class="flip-container">
 	                                                    <div class="flipper">
 	                                                        <div class="front">
-	                                                            <a href="<%=request.getContextPath()%>/publico/Publico_detalledeproducto.jsp">
-	                                                                <img src="<%=request.getContextPath()%>/img/audi2.jpg" alt="" class="img-responsive">
+	                                                            <a href="detallecatalogo">
+	                                                                <img src="<%=request.getContextPath()%>/resources/img/audi2.jpg" alt="" class="img-responsive">
 	                                                            </a>
 	                                                        </div>
 	                                                        <div class="back">
-	                                                            <a href="<%=request.getContextPath()%>/publico/Publico_detalledeproducto.jsp">
-	                                                                <img src="<%=request.getContextPath()%>/img/audi2.jpg" alt="" class="img-responsive">
+	                                                            <a href="detallecatalogo">
+	                                                                <img src="<%=request.getContextPath()%>/resources/img/audi2.jpg" alt="" class="img-responsive">
 	                                                            </a>
 	                                                        </div>
 	                                                    </div>
 	                                                </div>
-	                                                <a href="<%=request.getContextPath()%>/publico/Publico_detalledeproducto.jsp" class="invisible">
-	                                                    <img src="<%=request.getContextPath()%>/img/audi2.jpg" alt="" class="img-responsive">
+	                                                <a href="<detallecatalogo" class="invisible">
+	                                                    <img src="<%=request.getContextPath()%>/resources/img/audi2.jpg" alt="" class="img-responsive">
 	                                                </a>
 	                                                <div class="text">
-	                                                    <h3><a href="<%=request.getContextPath()%>/publico/Publico_detalledeproducto.jsp">Audi RZero</a></h3>
+	                                                    <h3><a href="detallecatalogo">Audi RZero</a></h3>
 	                                                    <p class="price">
 	                                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>5
 	                                                    <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 3
 	                                                    </p>
 	                                                    <p class="price">Desde $81.23</p>
 	                                                    <p class="buttons">
-	                                                        <a href="<%=request.getContextPath()%>/publico/Publico_detalledeproducto.jsp" class="btn btn-primary">Ver Detalle</a>
+	                                                        <a href="detallecatalogo" class="btn btn-primary">Ver Detalle</a>
 	                                                    </p>
 	                                                </div>
 	                                                <!-- /.text -->

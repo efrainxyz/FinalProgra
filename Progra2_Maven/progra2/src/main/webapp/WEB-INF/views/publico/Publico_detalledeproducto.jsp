@@ -10,7 +10,7 @@
                         <div class="col-sm-4">
                         	<div class="box">
 	                            <div id="mainImage" >
-	                                <img src="<%=request.getContextPath() %>/img/audi_rzero1.jpg" alt="" class="img-responsive">
+	                                <img src="<%=request.getContextPath() %>/resources/img/audi_rzero1.jpg" alt="" class="img-responsive">
 	                            </div>
 								<hr>
 								<button class="btn btn-default btn-sm btn-primary" onclick="return scriptInfo(this.form)"><i class="fa fa-pencil"></i> Reservar</button>

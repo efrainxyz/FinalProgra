@@ -69,7 +69,7 @@
                                         <td>S/. 150.00</td>
                                         <td><span class="label label-info">En entrega</span>
                                         </td>
-                                        <td><a href="<%=request.getContextPath() %>/cliente/Cliente_verdetalledeorden.jsp" class="btn btn-primary btn-sm">Ver</a>
+                                        <td><a href="verdetalleorden" class="btn btn-primary btn-sm">Ver</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -78,7 +78,7 @@
                                         <td>S/. 150.00</td>
                                         <td><span class="label label-info">En entrega</span>
                                         </td>
-                                        <td><a href="<%=request.getContextPath() %>/cliente/Cliente_verdetalledeorden.jsp" class="btn btn-primary btn-sm">Ver</a>
+                                        <td><a href="verdetalleorden" class="btn btn-primary btn-sm">Ver</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -87,7 +87,7 @@
                                         <td>S/. 150.00</td>
                                         <td><span class="label label-success">Devuelto</span>
                                         </td>
-                                        <td><a href="<%=request.getContextPath() %>/cliente/Cliente_verdetalledeorden.jsp" class="btn btn-primary btn-sm">Ver</a>
+                                        <td><a href="verdetalleorden" class="btn btn-primary btn-sm">Ver</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -96,7 +96,7 @@
                                         <td>S/. 150.00</td>
                                         <td><span class="label label-danger">Cancelado</span>
                                         </td>
-                                        <td><a href="<%=request.getContextPath() %>/cliente/Cliente_verdetalledeorden.jsp" class="btn btn-primary btn-sm">Ver</a>
+                                        <td><a href="verdetalleorden" class="btn btn-primary btn-sm">Ver</a>
                                         </td>
                                     </tr>
                                    
@@ -113,16 +113,14 @@
 
     </div>
 
-    <script src="<%=request.getContextPath()%>/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/jquery.cookie.js"></script>
-    <script src="<%=request.getContextPath()%>/js/waypoints.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/modernizr.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap-hover-dropdown.js"></script>
-    <script src="<%=request.getContextPath()%>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/front.js"></script>
-
-
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.cookie.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/waypoints.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/modernizr.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
 
 </body>
 

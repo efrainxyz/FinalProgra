@@ -22,16 +22,16 @@
                 <div class="col-md-12">
                     <div id="main-slider">
                         <div class="item">
-                            <img src="<%=request.getContextPath() %>/img/main-slider1.jpg" alt="" class="img-responsive">
+                            <img src="<%=request.getContextPath() %>/resources/img/main-slider1.jpg" alt="" class="img-responsive">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="<%=request.getContextPath() %>/img/main-slider2.jpg" alt="">
+                            <img class="img-responsive" src="<%=request.getContextPath() %>/resources/img/main-slider2.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="<%=request.getContextPath() %>/img/main-slider3.jpg" alt="">
+                            <img class="img-responsive" src="<%=request.getContextPath() %>/resources/img/main-slider3.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="<%=request.getContextPath() %>/img/main-slider4.jpg" alt="">
+                            <img class="img-responsive" src="<%=request.getContextPath() %>/resources/img/main-slider4.jpg" alt="">
                         </div>
                     </div>
                     <!-- /#main-slider -->
@@ -57,18 +57,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                            
-                                                <img src="<%=request.getContextPath() %>/img/product1.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product1.jpg" alt="" class="img-responsive">
                                          
                                         </div>
                                         <div class="back">
                                            
-                                                <img src="<%=request.getContextPath() %>/img/product1.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product1.jpg" alt="" class="img-responsive">
                                            
                                         </div>
                                     </div>
                                 </div>
                               
-                                    <img src="<%=request.getContextPath() %>/img/product1.jpg" alt="" class="img-responsive">
+                                    <img src="<%=request.getContextPath() %>/resources/img/product1.jpg" alt="" class="img-responsive">
                                 
                               
                             </div>
@@ -81,18 +81,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                             
-                                                <img src="<%=request.getContextPath() %>/img/product2.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product2.jpg" alt="" class="img-responsive">
                                           
                                         </div>
                                         <div class="back">
                                            
-                                                <img src="<%=request.getContextPath() %>/img/product2.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product2.jpg" alt="" class="img-responsive">
                                            
                                         </div>
                                     </div>
                                 </div>
                                
-                                    <img src="<%=request.getContextPath() %>/img/product2.jpg" alt="" class="img-responsive">
+                                    <img src="<%=request.getContextPath() %>/resources/img/product2.jpg" alt="" class="img-responsive">
                                
 
                             </div>
@@ -104,18 +104,18 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                                <img src="<%=request.getContextPath() %>/img/product3.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product3.jpg" alt="" class="img-responsive">
                                             
                                         </div>
                                         <div class="back">
                                      
-                                                <img src="<%=request.getContextPath() %>/img/product3.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product3.jpg" alt="" class="img-responsive">
                                       
                                         </div>
                                     </div>
                                 </div>
                                 
-                                    <img src="<%=request.getContextPath() %>/img/product3.jpg" alt="" class="img-responsive">
+                                    <img src="<%=request.getContextPath() %>/resources/img/product3.jpg" alt="" class="img-responsive">
                             
                     
                             </div>
@@ -128,18 +128,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                            
-                                                <img src="<%=request.getContextPath() %>/img/product4.png" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product4.png" alt="" class="img-responsive">
                                       
                                         </div>
                                         <div class="back">
                                         
-                                                <img src="<%=request.getContextPath() %>/img/product4.png" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product4.png" alt="" class="img-responsive">
                                     
                                         </div>
                                     </div>
                                 </div>
                               
-                                    <img src="<%=request.getContextPath() %>/img/product4.png" alt="" class="img-responsive">
+                                    <img src="<%=request.getContextPath() %>/resources/img/product4.png" alt="" class="img-responsive">
                         
                             </div>
                             <!-- /.product -->
@@ -151,18 +151,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                            
-                                                <img src="<%=request.getContextPath() %>/img/product5.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product5.jpg" alt="" class="img-responsive">
                                           
                                         </div>
                                         <div class="back">
                                            
-                                                <img src="<%=request.getContextPath() %>/img/product5.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product5.jpg" alt="" class="img-responsive">
                                  
                                         </div>
                                     </div>
                                 </div>
                          
-                                    <img src="<%=request.getContextPath() %>/img/product5.jpg" alt="" class="img-responsive">
+                                    <img src="<%=request.getContextPath() %>/resources/img/product5.jpg" alt="" class="img-responsive">
                          
                             </div>
                             <!-- /.product -->
@@ -174,18 +174,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                          
-                                                <img src="<%=request.getContextPath() %>/img/product6.png" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product6.png" alt="" class="img-responsive">
                                           
                                         </div>
                                         <div class="back">
                                           
-                                                <img src="<%=request.getContextPath() %>/img/product6.png" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product6.png" alt="" class="img-responsive">
                                           
                                         </div>
                                     </div>
                                 </div>
                               
-                                    <img src="<%=request.getContextPath() %>/img/product6.png" alt="" class="img-responsive">
+                                    <img src="<%=request.getContextPath() %>/resources/img/product6.png" alt="" class="img-responsive">
                            
                             </div>
                  
@@ -198,18 +198,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                            
-                                                <img src="<%=request.getContextPath() %>/img/product7.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product7.jpg" alt="" class="img-responsive">
                                        
                                         </div>
                                         <div class="back">
                                             
-                                                <img src="<%=request.getContextPath() %>/img/product7.jpg" alt="" class="img-responsive">
+                                                <img src="<%=request.getContextPath() %>/resources/img/product7.jpg" alt="" class="img-responsive">
                                            
                                         </div>
                                     </div>
                                 </div>
                                
-                                    <img src="<%=request.getContextPath() %>/img/product7.jpg" alt="" class="img-responsive">
+                                    <img src="<%=request.getContextPath() %>/resources/img/product7.jpg" alt="" class="img-responsive">
                               
                                
                             </div>
@@ -230,16 +230,14 @@
 
     </div>
 
-    <script src="<%=request.getContextPath()%>/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/jquery.cookie.js"></script>
-    <script src="<%=request.getContextPath()%>/js/waypoints.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/modernizr.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap-hover-dropdown.js"></script>
-    <script src="<%=request.getContextPath()%>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/front.js"></script>
-
-
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.cookie.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/waypoints.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/modernizr.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
 </body>
 
 </html>
