@@ -106,23 +106,18 @@ public class PersonaController {
 			int existeCorreo=dao.buscarCorreo(bean.getCorreo());
 			
 			if(existeCorreo!=1){
-				System.out.println("EL CORREO ESTA BIEEN");
-				int respuesta=dao.RegistrarPersona(bean);
-				if(respuesta!=0){
-					
-					System.out.println("SE REGISTRO BIEEEN");
-					model.addObject("mensaje","Ha sido registrado satisfactoriamente.");
-					model.setViewName("/publico/Publico_registarcliente");
-				}else{
-					System.out.println("NO SE REGISTROOOO");
-					model.addObject("mensaje","Parace que el DNI ya ha sido registrado.");
-					model.setViewName("/publico/Publico_registarcliente");
-				}
-				
+					System.out.println("EL CORREO ESTA BIEEN");
+					int respuesta=dao.RegistrarPersona(bean);
+					if(respuesta!=0){
+						model.addObject("mensaje","Ha sido registrado satisfactoriamente.");
+						model.setViewName("/publico/Publico_registarcliente");
+					}else{
+						model.addObject("mensaje","Parace que el DNI ya ha sido registrado.");
+						model.setViewName("/publico/Publico_registarcliente");
+					}
 			}else{
-				System.out.println("EL CORREO EXISSSTEEEE");
-				model.addObject("Parece que el correo ya esta registrado.");
-				model.setViewName("publico/Publico_registarcliente");
+				model.addObject("mensaje","Parece que el correo ya esta registrado.");
+				model.setViewName("/publico/Publico_registarcliente");
 			}
 			
 		} catch (Exception e) {

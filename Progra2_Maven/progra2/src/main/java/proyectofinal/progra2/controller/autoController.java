@@ -26,7 +26,7 @@ public class autoController {
 	@Autowired
 	private autoDao dao;
 
-	@RequestMapping(value="/listarAuto")
+	@RequestMapping(value="/listarauto")
 	public ModelAndView listarAuto(HttpServletResponse response,HttpServletRequest request) throws IOException{
 		ModelAndView model=new ModelAndView();
 		
@@ -37,7 +37,7 @@ public class autoController {
 					try {
 						List<Auto> listar= dao.listarAutos();
 						model.addObject("listarjsp", listar);
-						model.setViewName("Administrador_mantenerauto");
+						model.setViewName("/administrador/Administrador_mantenerauto");
 					
 					} catch (Exception e) {
 						 System.out.println("problema en el controller auto listar"+e.getMessage());
@@ -45,7 +45,7 @@ public class autoController {
 				}
 			}else{
 				model.addObject("mensaje","Su sesion ha expirado, intente de nuevo.");
-				model.setViewName("Publico_paginaprincipal");
+				model.setViewName("/publico/Publico_paginaprincipal");
 			}
 		
 		
@@ -67,11 +67,11 @@ public class autoController {
 					if(respuesta!=1)
 					{
 						model.addObject("mensaje","no se agrego");
-						model.setViewName("Administrador_agregarauto");
+						model.setViewName("/administrador/Administrador_agregarauto");
 					}else{
 						model.addObject("mensaje","se agrego");
 						model.addObject("listarjsp",listar);
-						model.setViewName("Administrador_mantenerauto");
+						model.setViewName("/administrador/Administrador_mantenerauto");
 					}
 					
 				}
@@ -83,7 +83,7 @@ public class autoController {
 				model.addObject("listartipoviaje",listar1);
 				model.addObject("listarmarcaauto",listar2);
 				model.addObject("listarsede",listar3);
-				model.setViewName("Administrador_agregarauto");
+				model.setViewName("/administrador/Administrador_agregarauto");
 				}
 			
 		} catch (Exception e) {
@@ -98,7 +98,7 @@ public class autoController {
 		try {
 					List<ModeloAuto> listar1=dao.listarModeloAuto(idmarca);
 						model.addObject("listarmodeloauto",listar1);
-						model.setViewName("Administrador_agregarauto");
+						model.setViewName("/administrador/Administrador_agregarauto");
 
 			
 		} catch (Exception e) {

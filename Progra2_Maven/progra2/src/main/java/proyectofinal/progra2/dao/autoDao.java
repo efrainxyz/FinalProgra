@@ -31,7 +31,7 @@ public class autoDao implements I_Auto{
 			listar= query.getResultList();
 		} catch (Exception e) {
 		 System.out.println("problema en el dao auto listar  "+e.getMessage());
-		 e.printStackTrace();
+		
 		}
 		
 		return listar;

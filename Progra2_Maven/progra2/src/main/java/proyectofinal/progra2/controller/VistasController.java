@@ -57,10 +57,6 @@ public class VistasController {
 		return new ModelAndView("/publico/Publico_contactenos");
 	}
 	
-	@RequestMapping(value="/registrarse")
-	public ModelAndView registrarse(HttpServletResponse response) throws IOException{
-		return new ModelAndView("/publico/Publico_registarcliente");
-	}
 	
 	@RequestMapping(value="/catalogo")
 	public ModelAndView catalogo(HttpServletResponse response) throws IOException{
@@ -79,10 +75,7 @@ public class VistasController {
 		return new ModelAndView("/administrador/Administrador_paginaprincipal");
 	}
 	
-	@RequestMapping(value="/listarauto")
-	public ModelAndView listarAuto(HttpServletResponse response) throws IOException{
-		return new ModelAndView("/administrador/Administrador_mantenerauto");
-	}
+	
 	
 	@RequestMapping(value="/registrarpago")
 	public ModelAndView registrarPago(HttpServletResponse response) throws IOException{

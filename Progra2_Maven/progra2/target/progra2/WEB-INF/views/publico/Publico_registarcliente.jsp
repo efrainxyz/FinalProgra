@@ -111,7 +111,7 @@
                         </form>
                         <div class="row">
                         	<c:if test="${not empty mensaje }">
-                            	 <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar1">${mensaje}</div>
+                            	 <div class="col-sm-12 form-group alert alert-danger" >${mensaje}</div>
 		                 	
                             </c:if>
                         </div>
