@@ -69,7 +69,7 @@ public class personaDao implements I_Persona {
 			try {
 				EntityManagerFactory emf=Persistence.createEntityManagerFactory("progra2");
 				EntityManager em=emf.createEntityManager();
-				TypedQuery<Persona> sql=em.createQuery("Select p From Persona p Where p.correo = : valor1",Persona.class);
+				TypedQuery<Persona> sql=em.createQuery("Select p From Persona p Where p.correo = :valor1"+"",Persona.class);
 				sql.setParameter("valor1",correo);
 				respuesta=1;
 			} catch (Exception e) {

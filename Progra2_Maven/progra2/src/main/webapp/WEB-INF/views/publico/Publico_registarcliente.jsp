@@ -20,7 +20,9 @@
                         <p class="text-muted">Si tiene alguna duda, por favor <a href="Publico_contactenos.jsp">contactenos</a>.</p>
 
                         <hr>
-
+						 <c:if test="${not empty mensaje }">
+          						<div class="col-sm-12 form-group alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${mensaje}</div>
+             			 </c:if> 
                         <form id="form" name="form" action="registroCliente"  method="post" >
                         	<div class="row">
                         		<div class="col-sm-6">
@@ -72,10 +74,6 @@
                             </div>
                             <br>
                             <div class="row">
-                            <c:if test="${not empty mensaje }">
-                            	 <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar1">${mensaje}</div>
-		                 	
-                            </c:if>
                             <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar1">Por favor complete todos los campos.</div>
 		                 	<div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar2">Las contraseñas escritas no coinciden.</div>
 		                 	<div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="errorRegistrar3">El DNI tiene que tener 8 carácteres. Ejemplo:75228582.</div>

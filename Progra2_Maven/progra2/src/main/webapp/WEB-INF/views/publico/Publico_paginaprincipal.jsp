@@ -40,9 +40,9 @@
                 <div class="box">
                     <div class="container">
                         <div class="col-md-12">
-                        <c:if test="${ not empty mensaje }"></c:if>
+                       
                             <h2>Compañias de prestigio. Amplia gama de coches. ¡Grandes descuentos!</h2>
-                        </div>
+               
                     </div>
                 </div>
 

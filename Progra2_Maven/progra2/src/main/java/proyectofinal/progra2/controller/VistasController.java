@@ -57,6 +57,10 @@ public class VistasController {
 		return new ModelAndView("/publico/Publico_contactenos");
 	}
 	
+	@RequestMapping(value="/registrarse")
+	public ModelAndView registrarse(HttpServletResponse response) throws IOException{
+		return new ModelAndView("/publico/Publico_registarcliente");
+	}
 	
 	@RequestMapping(value="/catalogo")
 	public ModelAndView catalogo(HttpServletResponse response) throws IOException{
