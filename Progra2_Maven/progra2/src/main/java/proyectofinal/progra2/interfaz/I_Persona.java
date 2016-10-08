@@ -10,4 +10,5 @@ public interface I_Persona {
 	public int RegistrarPersona(Persona bean) throws Exception;
 	public Persona listarPersona(String dni,String correo) throws Exception;
 	public int  buscarCorreo(String correo);
+	public int buscarDni(String dni) throws Exception;
 }

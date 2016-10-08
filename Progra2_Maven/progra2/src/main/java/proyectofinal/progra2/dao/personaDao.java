@@ -55,9 +55,9 @@ public class personaDao implements I_Persona {
 				em.getTransaction().commit();
 				respuesta=1;
 				em.close();
- 				
+				
 			} catch (Exception e) {
-				System.out.println("QUE PASA ACA?? "+e.getMessage());
+				System.out.println("QUE PASA ACA????????? "+e.getMessage());
 			}
 		
 		return respuesta;
@@ -69,16 +69,47 @@ public class personaDao implements I_Persona {
 			try {
 				EntityManagerFactory emf=Persistence.createEntityManagerFactory("progra2");
 				EntityManager em=emf.createEntityManager();
-				TypedQuery<Persona> sql=em.createQuery("Select p From Persona p Where p.correo = :valor1"+"",Persona.class);
+				TypedQuery<Persona> sql=em.createQuery("Select p From Persona p Where p.correo = :valor1",Persona.class);
 				sql.setParameter("valor1",correo);
-				respuesta=1;
+				System.out.println(correo+"  BUSSSSSSSSSCAAAAAAAAAAAAAAAR DDDNNNNIIII " +sql.getFirstResult());
+				if(sql.getResultList().size()>0){
+					respuesta=1;
+				}
+				
+				
 			} catch (Exception e) {
 				System.out.print("ERROR AL BUSCAR CORREO "+e.getMessage());
+				e.printStackTrace();
 			}
 		
 		return respuesta;
+		
 	}
 
+
+	@Override
+	public int buscarDni(String dni) throws Exception {
+		int respuesta=0;
+		try {
+			EntityManagerFactory emf=Persistence.createEntityManagerFactory("progra2");
+			EntityManager em=emf.createEntityManager();
+			TypedQuery<Persona> sql=em.createQuery("Select p From Persona p Where p.dni = :valor2",Persona.class);
+			sql.setParameter("valor2",dni);
+			System.out.println(dni+"  BUSSSSSSSSSCAAAAAAAAAAAAAAAR DDDNNNNIIII " +sql.getFirstResult() +"  "+sql.getResultList().size());
+			if(sql.getResultList().size()>0){
+				respuesta=1;
+			}
+			
+		} catch (Exception e) {
+			System.out.print("ERROR AL BUSCAR DNI !!! "+e.getMessage());
+			e.printStackTrace();
+		}
+	
+	return respuesta;
+	}
+
+	
+		
 
 	
 }

@@ -91,32 +91,33 @@ public class PersonaController {
 	@RequestMapping(value="/registroCliente")
 	public ModelAndView registroCliente(HttpServletResponse response,HttpServletRequest request,Persona bean) throws IOException{
 		ModelAndView model = new ModelAndView();
-		//CUANDO SE DESEE AGREGAR UN MANY TO ONE  <- CUANDO LO BEAN EN EL BEAN DONDE QUIEREN HACER EL INSERT
-		//PRIMERO OBTENIENE LOS VALORES DEL ROL QUE SOLO ENTRARAN A UN BEAN TIPO ROL
-		// LUEGO QUE SE SETEA LOS VALORES AL BEAN TIPO ROL
-		//AL "BEAN" TIPO PERSONA QUE ESTA INGRESANDO EN ESTE CONTRALADOR.
-		//SE LE SETEA EL ROL , COMO PUEDEN VER SOLO ADMITE VALORES TIPO ROL.
-		// PERO COMO YA TENEMOS NUESTRO BEAN TIPO ROL CREADO Y CON LOS VALORES AGREGADOS
-		// SE LE MANDA :) FIN
-		Rol beanR = new Rol();
-		beanR.setIdRol(2);
-		bean.setRol(beanR);
 		
 		try {
-			int existeCorreo=dao.buscarCorreo(bean.getCorreo());
+			int existeDni=dao.buscarDni(bean.getDni());
 			
-			if(existeCorreo!=1){
-					System.out.println("EL CORREO ESTA BIEEN");
-					int respuesta=dao.RegistrarPersona(bean);
-					if(respuesta!=0){
-						model.addObject("mensaje","Ha sido registrado satisfactoriamente.");
-						model.setViewName("/publico/Publico_registarcliente");
-					}else{
-						model.addObject("mensaje","Parace que el DNI ya ha sido registrado.");
-						model.setViewName("/publico/Publico_registarcliente");
-					}
+			if(existeDni<1){
+					int existeCorreo=dao.buscarCorreo(bean.getCorreo());
+						if(existeCorreo<1){
+
+								Rol beanR = new Rol();
+								beanR.setIdRol(2);
+								bean.setRol(beanR);
+								
+								int registro=dao.RegistrarPersona(bean);
+									if(registro!=0){
+										model.addObject("mensaje1","Ha sido registrado satisfactoriamente.");
+										model.setViewName("/publico/Publico_registarcliente");
+									}else{
+										model.addObject("mensaje","Hubo problemas en el registro, intente de nuevo.");
+										model.setViewName("/publico/Publico_registarcliente");
+									}
+						}else{
+							model.addObject("mensaje","Parace que el CORREO ya ha sido registrado.");
+							model.setViewName("/publico/Publico_registarcliente");
+						}
+							
 			}else{
-				model.addObject("mensaje","Parece que el correo ya esta registrado.");
+				model.addObject("mensaje","Parece que el DNI ya esta registrado.");
 				model.setViewName("/publico/Publico_registarcliente");
 			}
 			

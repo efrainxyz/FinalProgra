@@ -22,7 +22,10 @@
                         <hr>
 						 <c:if test="${not empty mensaje }">
           						<div class="col-sm-12 form-group alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${mensaje}</div>
-             			 </c:if> 
+             			 </c:if>
+             			  <c:if test="${not empty mensaje1 }">
+          						<div class="col-sm-12 form-group alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${mensaje1}</div>
+             			 </c:if>  
                         <form id="form" name="form" action="registroCliente"  method="post" >
                         	<div class="row">
                         		<div class="col-sm-6">
