@@ -108,6 +108,32 @@ public class personaDao implements I_Persona {
 	return respuesta;
 	}
 
+
+	@Override
+	public Persona listar(String dni) throws Exception {
+		Persona persona=null;
+		try {
+			EntityManagerFactory emf=Persistence.createEntityManagerFactory("progra2");
+			EntityManager em=emf.createEntityManager();
+			TypedQuery<Persona> sql=em.createQuery("Select p From Persona p Where p.dni = :valor1",Persona.class);
+			sql.setParameter("valor1",dni);
+			
+			if(sql.getSingleResult().getDni()!=null){
+				persona= new Persona();
+				persona=sql.getSingleResult();
+			}
+			
+			
+							
+		} catch (Exception e) {
+			System.out.print("ERROR LISTAR PERSONA "+e.getMessage());
+			return null;
+		}
+	
+	
+	return persona;
+	}
+
 	
 		
 

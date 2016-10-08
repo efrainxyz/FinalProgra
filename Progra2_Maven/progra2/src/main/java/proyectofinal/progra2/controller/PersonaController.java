@@ -51,7 +51,7 @@ public class PersonaController {
 						if(ses.getRol().getNombre().equals("administrador")){
 							return vistas.inicioAdm(response);
 						}else if(ses.getRol().getNombre().equals("cliente")){
-							return vistas.inicioCli(response);
+							model.setViewName("cliente/Cliente_paginaprincipal");
 						}
 					}else{
 						model.addObject("mensaje", "Los datos ingresados son incorrectos.");

@@ -45,16 +45,18 @@
                 <div class="col-md-9">
                     <div class="box">
                         <h1>Mi Cuenta</h1>
+                        <h5 style="color:red">${mensaje}</h5>
+                        <h5 style="color:green">${mensaje1}</h5>
                         <p class="lead">Cambie sus datos personales o su contraseña aqui.</p>
                         
                         <h3>Cambiar la contraseña</h3>
 
-                        <form>
+                        <form method="post" action="cambiarContrasena">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="password_old">Contraseña Actual</label>
-                                        <input type="password" class="form-control" id="password_old" placeholder="Ingrese su contraseña actual">
+                                        <input type="password" class="form-control" name="actualcontrasena" id="password_old"  placeholder="Ingrese su contraseña actual">
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +64,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="password_1">Contraseña Nueva</label>
-                                        <input type="password" class="form-control" id="password_1" placeholder="Ingrese su contraseña nueva">
+                                        <input type="password" class="form-control" id="password_1" name="contrasena" placeholder="Ingrese su contraseña nueva">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -82,30 +84,30 @@
                         <hr>
 
                         <h3>Detalles personales</h3>
-                        <form>
+                        <form action="datosPersonales" method="post">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="nombre">Nombres</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese sus nombres">
+                                        <input type="text" class="form-control" id="nombre" name="nombre"  value="${nombre}" placeholder="Ingrese sus nombres">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="apeMat">Apellido Materno</label>
-                                        <input type="text" class="form-control" id="apePat" name="apeMat" placeholder="Ingrese su Apellido Paterno">
+                                        <input type="text" class="form-control" id="apePat" name="apellidoMaterno" value="${apepat}" placeholder="Ingrese su Apellido Paterno">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="apePat">Apellido Paterno</label>
-                                        <input type="text" class="form-control" id="apePat" name="apePat" placeholder="Ingrese su Apellido Materno">
+                                        <input type="text" class="form-control" id="apePat" name="apellidoPaterno" value="${apemat}" placeholder="Ingrese su Apellido Materno">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="correo">Correo electronico</label>
-                                        <input type="text" class="form-control" id="correo" name="correo" placeholder="Ejempo: ejemplo@gmail.com">
+                                        <input type="text" class="form-control" id="correo" name="correo" value="${correo}" placeholder="Ejempo: ejemplo@gmail.com">
                                     </div>
                                 </div>
                             </div>

@@ -18,9 +18,25 @@ import proyectofinal.progra2.interfaz.I_Cliente;
 public class clienteDao implements I_Cliente {
 
 	@Override
-	public int actualizarContrasena(String contrasena) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int actualizarContrasena(String contrasena, String dni) throws Exception {
+		int resultado=0;
+		try {
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("progra2");
+			EntityManager em = emf.createEntityManager();
+			em.getTransaction().begin();
+			Persona clave=em.find(Persona.class, dni);
+			
+			clave.setContrasena(contrasena);
+			em.merge(clave);
+			em.getTransaction().commit();
+			em.close();
+			System.out.print("llega esta "+contrasena);
+			resultado=1;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.print(e.getMessage());
+		}	
+		return resultado;
 	}
 
 	@Override
@@ -45,5 +61,31 @@ public class clienteDao implements I_Cliente {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int actualizardatospersonales(Persona bean,String dni)
+			throws Exception {
+		int resultado=0;
+		try {
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("progra2");
+			EntityManager em = emf.createEntityManager();
+			em.getTransaction().begin();
+			Persona actualizar=em.find(Persona.class,dni);
+			
+			actualizar.setNombre(bean.getNombre());
+			actualizar.setApellidoPaterno(bean.getApellidoPaterno());
+			actualizar.setApellidoMaterno(bean.getApellidoMaterno());
+			actualizar.setCorreo(bean.getCorreo());
+			em.merge(actualizar);
+			em.getTransaction().commit();
+			em.close();
+			resultado=1;
+		} catch (Exception e) {
+			System.out.print("error en cliente dao actualizar datos personales "+e.getMessage());
+		}	
+		return resultado;
+	}
+
+
 
 }
