@@ -50,7 +50,7 @@ public class autoDao implements I_Auto{
 			respuesta=1;
 			
 		} catch (Exception e) {
-			System.out.print(e.getMessage());
+			System.out.println("ERROR "+e.getMessage());
 		}
 		
 		return respuesta;
@@ -113,7 +113,7 @@ public class autoDao implements I_Auto{
 		try {
 			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
 			EntityManager em= emf.createEntityManager();
-			TypedQuery<ModeloAuto> query=em.createQuery("SELECT a FROM MarcaAuto a where a.idModeloAuto = : valor1",ModeloAuto.class);
+			TypedQuery<ModeloAuto> query=em.createQuery("SELECT a FROM ModeloAuto a,MarcaAuto m where  m=a.marcaAuto  and m.idMarcaAuto = :valor1",ModeloAuto.class);
 			query.setParameter("valor1",id);
 			
 			listar= query.getResultList();

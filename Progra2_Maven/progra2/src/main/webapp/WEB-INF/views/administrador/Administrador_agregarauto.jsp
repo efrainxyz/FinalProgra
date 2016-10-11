@@ -25,7 +25,8 @@
                     
                     <h1>Agregar un auto</h1>
                     <hr>
-                    <form>
+                    <form action="agregarAuto">
+                    <input type="hidden" name="accion" value="agregar">
                         <div class="row">
 
                             <div class="col-sm-6">
@@ -58,14 +59,14 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="precio_dia">Precio por día</label>
-                                    <input type="text" class="form-control" id="precio_dia" name="precioDia" maxlength="45" placeholder="Ejemplo: S/. 85.20">
+                                    <input type="text" class="form-control" id="precio_dia" name="precioDia" maxlength="45" placeholder="Ejemplo:  85.20">
                                 </div>
                             </div> 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="ubicacion">Ubicación del auto (Sede)</label>
                                    
-                                    <select class="form-control" id="sede" name="sede">
+                                    <select class="form-control" id="sede" name="idSede">
                                         <option>Seleccione</option>
                                         <c:if test="${not empty listarsede}">
 		        							<c:forEach var="listarsede" items="${listarsede}">
@@ -79,10 +80,10 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="marca_auto">Marca de Auto</label>
-                                    <select class="form-control" id="marca_auto" >
+                                    <select class="form-control" id="marca_auto" onchange="listarModelo();">
                                         <c:if test="${not empty listarmarcaauto}">
 		        							<c:forEach var="listarmarcaauto" items="${listarmarcaauto}">
-	               		 						<option>${listarmarcaauto.marca}</option>	        		
+	               		 						<option value="${listarmarcaauto.idMarcaAuto}">${listarmarcaauto.marca}</option>	        		
 								        	</c:forEach>
 							        	</c:if>
                                     </select>
@@ -91,7 +92,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="modelo_auto">Modelo de Auto</label>
-                                    <select class="form-control" id="modelo_auto" name="modeloAuto">
+                                    <select class="form-control" id="modelo_auto" name="idModeloAuto">
                                         <option>Seleccione</option>
                                     </select>
                                 </div>
@@ -109,10 +110,10 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="tipo_viaje">Tipo de Viaje</label>
-                                    <select class="form-control" id="tipo_viaje" name="tipoViajeAuto">
+                                    <select class="form-control" id="tipo_viaje" name="idTipoViajeAuto">
                                        <c:if test="${not empty listartipoviaje}">
 		        							<c:forEach var="listartipoviaje" items="${listartipoviaje}">
-	               		 						<option>${listartipoviaje.tipo}</option>	        		
+	               		 						<option value="${listartipoviaje.idTipoViajeAuto}">${listartipoviaje.tipo}</option>	        		
 								        	</c:forEach>
 							        	</c:if>
                                     </select>
@@ -121,8 +122,10 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="transmision">Transmisión</label>
-                                    <select class="form-control" id="transmision" name="transmisionAutoId">
+                                    <select class="form-control" id="transmision" name="transmision">
                                         <option>Seleccione</option>
+                                        <option value="transmision">Transmisión</option>
+                                        <option value="mecanico">Mecánico</option>
                                     </select>
                                 </div>
                             </div>
@@ -130,16 +133,35 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="combustible">Combustible</label>
-                                    <select class="form-control" id="combustible" name="combustible">
+                                    <select class="form-control" id="combustible" name="combustibleAuto">
                                         <option>Seleccione</option>
+                                        <option value="gas">Gas</option>
+                                        <option value="gasolina">Gasolina</option>
                                     </select>
                                 </div>
                             </div>
                               
+                              
+                             <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="transmision">Año</label>
+                                    <input type="number" class="form-control" id="year" name="year" maxlength="4"  placeholder="Ejemplo: 2006">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="combustible">Foto</label>
+                                   <input type="text" class="form-control" id="imagen" name="imagen"  placeholder="Ejemplo: Www.imagenes/image.png">
+                                </div>
+                            </div>  
+                              
+                              
+                              
                             <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="descripcion_auto">Descripción</label>
-                                        <textarea id="descripcion_auto" class="form-control" name="descripcion_auto" maxlength="500" placeholder="Límite de 500 carácteres"></textarea>
+                                        <textarea id="descripcion_auto" class="form-control" name="descripcion" maxlength="500" placeholder="Límite de 500 carácteres"></textarea>
                                     </div>
                             </div>
                         </div>
@@ -174,7 +196,7 @@
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
-
+<script src="<%=request.getContextPath()%>/resources/js/auto.js"></script>
 </body>
 
 </html>

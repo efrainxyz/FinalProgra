@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import com.google.gson.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +24,7 @@ import proyectofinal.progra2.bean.Persona;
 import proyectofinal.progra2.bean.Sede;
 import proyectofinal.progra2.bean.TipoViajeAuto;
 import proyectofinal.progra2.dao.autoDao;
+import util.ResponseObject;
 
 @Controller
 public class autoController {
@@ -36,6 +42,8 @@ public class autoController {
 				if(user.getRol().getNombre().equals("administrador")){
 					try {
 						List<Auto> listar= dao.listarAutos();
+					
+							 
 						model.addObject("listarjsp", listar);
 						model.setViewName("/administrador/Administrador_mantenerauto");
 					
@@ -52,28 +60,76 @@ public class autoController {
 		return model;
 	}
 	
+	
+	
+	@RequestMapping(value="/list")
+	public void list(HttpServletResponse response,HttpServletRequest request) throws IOException{
+		
+						List<Auto> listar= dao.listarAutos();
+						JSONArray list = new JSONArray();
+						
+						 JSONObject obj2 = new JSONObject();
+							 for(int i=0;i<listar.size();i++){
+								 	JSONObject obj = new JSONObject();
+								 	obj.put("placa", listar.get(i).getMatricula());
+							        obj.put("transmision", listar.get(i).getTransmision());
+							        obj.put("year",  listar.get(i).getYear());
+							       
+							        list.add(obj);
+								}
+							 
+							 
+							 ResponseObject responseobj=null;
+								if(listar!=null){
+									responseobj=new ResponseObject();
+									response.setContentType("application/json");
+									response.setCharacterEncoding("UTF-8");
+									responseobj.setSuccess(true);
+									responseobj.setObject(list);
+									
+								}
+								response.getWriter().write(new Gson().toJson(responseobj));
+								System.out.println("json " + new Gson().toJson(responseobj));	 
+					
+	}
+	
+	
+	
+	
 	@RequestMapping(value="/agregarAuto")
-	public ModelAndView agregar(HttpServletResponse response,Auto auto, String accion) throws IOException{
+	public ModelAndView agregar(HttpServletResponse response,TipoViajeAuto tipo,Auto auto,ModeloAuto modelo,Sede sede, String accion) throws IOException{
 		ModelAndView model = new ModelAndView();
+		
+		System.out.println("LA ACCION QUE LLEGA... "+accion);
 		try {
 			
 			if(accion.equals("agregar"))
 				{
+					try {
+						auto.setSede(sede);
+						auto.setModeloAuto(modelo);
+						auto.setTipoViajeAuto(tipo);
+						auto.setEstado("0");
 					
-					int respuesta=dao.agregarAuto(auto);
-					
-					List<Auto> listar= dao.listarAutos();
-					
-					if(respuesta!=1)
-					{
-						model.addObject("mensaje","no se agrego");
-						model.setViewName("/administrador/Administrador_agregarauto");
-					}else{
-						model.addObject("mensaje","se agrego");
-						model.addObject("listarjsp",listar);
-						model.setViewName("/administrador/Administrador_mantenerauto");
+						int respuesta=dao.agregarAuto(auto);
+						
+						List<Auto> listar= dao.listarAutos();
+						
+						if(respuesta!=1)
+						{
+							model.addObject("mensaje","no se agrego");
+							model.setViewName("/administrador/Administrador_agregarauto");
+						}else{
+							model.addObject("mensaj	e","se agrego");
+							model.addObject("listarjsp",listar);
+							model.setViewName("/administrador/Administrador_mantenerauto");
+						}
+						
+					} catch (Exception e) {
+						System.out.println("ERROR agregar"+e.getMessage());
 					}
-					
+						
+						
 				}
 			else if(accion.equals("preagregar"))
 				{
@@ -87,11 +143,47 @@ public class autoController {
 				}
 			
 		} catch (Exception e) {
-			System.out.print(e.getMessage());
+			System.out.print("ERROR  todo"+e.getMessage());
 		}
 		
 		return model;
 	}
+	
+	
+	
+	
+	@RequestMapping(value="/listarModelo")
+	public void listarModelo(HttpServletResponse response,HttpServletRequest request,int idmarca) throws IOException{
+				
+					List<ModeloAuto> listar=dao.listarModeloAuto(idmarca);
+					
+					System.out.println("me llega este id desde ajax  "+idmarca+
+							"Y EL TAMAÑO DE LA LISTA ES!!! ! "+listar.size());
+						JSONArray list = new JSONArray();
+						 JSONObject obj2 = new JSONObject();
+							 for(int i=0;i<listar.size();i++){
+								 	JSONObject obj = new JSONObject();
+								 	obj.put("idmodelo", listar.get(i).getIdModeloAuto());
+							        obj.put("nommodelo", listar.get(i).getModelo());							       
+							        list.add(obj);
+								}
+							 
+							 
+							 ResponseObject responseobj=null;
+								if(listar!=null){
+									responseobj=new ResponseObject();
+									response.setContentType("application/json");
+									response.setCharacterEncoding("UTF-8");
+									responseobj.setSuccess(true);
+									responseobj.setObject(list);
+									
+								}
+								response.getWriter().write(new Gson().toJson(responseobj));
+								System.out.println("json " + new Gson().toJson(responseobj));	 
+					
+	}
+	
+	
 	@RequestMapping(value="/listarMarcaAuto")
 	public ModelAndView listarmarcar(HttpServletResponse response, int idmarca) throws IOException{
 		ModelAndView model = new ModelAndView();

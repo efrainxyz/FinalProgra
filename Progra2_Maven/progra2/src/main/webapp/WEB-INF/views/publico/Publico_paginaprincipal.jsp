@@ -224,7 +224,7 @@
     
 	<jsp:include page="Publico_footer.jsp" flush="true"/>
 
-
+	<button onclick="listar()">ASDASDSDAS</button>	
     </div>
 
     <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
@@ -235,6 +235,7 @@
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
+     <script src="<%=request.getContextPath()%>/resources/js/auto.js"></script>
 
 
 </body>
