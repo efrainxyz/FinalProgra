@@ -42,14 +42,14 @@ public class ClienteController {
 			HttpSession session=request.getSession();
 			Persona user=(Persona) session.getAttribute("usuario");
 				if(user!=null){
-					if(user.getRol().getNombre().equals("administrador")){
+					if(user.getRol().getNombre().equals("cliente")){
 						try {
-							List<Alquiler> listar= dao.listarAlquilerxCliente(Integer.parseInt(user.getDni()));
-							model.addObject("listarjsp", listar);
-							model.setViewName("/cliente/Administrador_mantenerauto");
-						
+								String dni=user.getDni();
+								List<Alquiler> lista=dao.listarAlquilerxCliente(dni);
+								model.addObject("lista",lista);
+								model.setViewName("/cliente/Cliente_verlistadeorden");
 						} catch (Exception e) {
-							 System.out.println("problema en el controller auto listar"+e.getMessage());
+							// System.out.println("problema en el controller auto listar"+e.getMessage());
 						}
 					}
 				}else{

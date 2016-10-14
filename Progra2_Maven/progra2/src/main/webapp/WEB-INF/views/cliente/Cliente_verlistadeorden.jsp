@@ -63,43 +63,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>S/. 150.00</td>
-                                        <td><span class="label label-info">En entrega</span>
-                                        </td>
-                                        <td><a href="verdetalleorden" class="btn btn-primary btn-sm">Ver</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>S/. 150.00</td>
-                                        <td><span class="label label-info">En entrega</span>
-                                        </td>
-                                        <td><a href="verdetalleorden" class="btn btn-primary btn-sm">Ver</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>S/. 150.00</td>
-                                        <td><span class="label label-success">Devuelto</span>
-                                        </td>
-                                        <td><a href="verdetalleorden" class="btn btn-primary btn-sm">Ver</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>S/. 150.00</td>
-                                        <td><span class="label label-danger">Cancelado</span>
-                                        </td>
-                                        <td><a href="verdetalleorden" class="btn btn-primary btn-sm">Ver</a>
-                                        </td>
-                                    </tr>
-                                   
+                                <c:if test="${not empty lista }">
+                                   <c:forEach var="lista" items="${lista}">
+	                                    <tr>
+	                                        <th># ${lista.idAlquiler}</th>
+	                                        <td>${lista.fechaReserva}</td>
+	                                        <td>S/. 150.00</td>
+	                                        <td><span class="label label-info">En entrega</span>
+	                                        </td>
+	                                        <td><a href="verdetalleorden" class="btn btn-primary btn-sm">Ver</a>
+	                                        </td>
+	                                    </tr>
+                                   </c:forEach>
+                                  </c:if> 
+                                  <c:if test="${empty lista }">
+                                   <tr>
+	                                        <th colspan="4">USTED NO HA REALIZADO NINGUNA RESERVA.</th>
+	                                       
+	                                </tr>
+	                                </c:if>
                                 </tbody>
                             </table>
                         </div>

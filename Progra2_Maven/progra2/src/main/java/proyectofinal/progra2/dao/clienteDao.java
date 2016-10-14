@@ -40,15 +40,15 @@ public class clienteDao implements I_Cliente {
 	}
 
 	@Override
-	public List<Alquiler> listarAlquilerxCliente(int dni) {
+	public List<Alquiler> listarAlquilerxCliente(String dni) {
 		List<Alquiler> lista=null;
 			try {
 				EntityManagerFactory emf=Persistence.createEntityManagerFactory("progra2");
 				EntityManager em=emf.createEntityManager();
-				TypedQuery<Persona> sql=em.createQuery("Select a From Alquiler a Where a.persona_dni = :valor1  and "
-						+ "p.contrasena = :valor2 ",Persona.class);
+													//"SELECT a FROM ModeloAuto a,MarcaAuto m where  m=a.marcaAuto  and m.idMarcaAuto = :valor1
+				TypedQuery<Alquiler> sql=em.createQuery("Select a From Alquiler a,Persona p  Where p=a.persona and p.dni = :valor1",Alquiler.class);
 				sql.setParameter("valor1",dni);
-				
+				lista=sql.getResultList();
 				
 			} catch (Exception e) {
 				System.out.println("ERROR LISTAR ALQUILER X CLIENTE "+e.getMessage());
