@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="<%=request.getContextPath() %>/js/jquery-1.11.0.min.js"></script>
+<script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
 <%String mensaje=(String)request.getAttribute("msj");
 String mensaje1=(String)request.getAttribute("msj1");
 String mensaje2=(String)request.getAttribute("msj2");%>
@@ -20,7 +20,7 @@ String mensaje2=(String)request.getAttribute("msj2");%>
 
                         <hr>
 
-                        <form id="recuperarContra" name="recuperarContra" action="<%=request.getContextPath() %>/RecuperarContrasena" method="post">
+                        <form id="recuperarContra" name="recuperarContra" action="recuperarContrasena" method="post">
                         	<div class="row">
                         		<div class="col-sm-6">
                                 	<div class="form-group">
@@ -76,14 +76,14 @@ String mensaje2=(String)request.getAttribute("msj2");%>
       <jsp:include page="Publico_footer.jsp" flush="true"/>
 
     </div>
-	<script src="<%=request.getContextPath() %>/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery.cookie.js"></script>
-    <script src="<%=request.getContextPath() %>/js/waypoints.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/modernizr.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap-hover-dropdown.js"></script>
-    <script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/front.js"></script>
+	<script src="<%=request.getContextPath() %>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/jquery.cookie.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/waypoints.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/modernizr.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/bootstrap-hover-dropdown.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/front.js"></script>
     
 
 </body>

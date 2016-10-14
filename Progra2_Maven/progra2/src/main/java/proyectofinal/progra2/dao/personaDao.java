@@ -134,7 +134,27 @@ public class personaDao implements I_Persona {
 	return persona;
 	}
 
-	
+	@Override
+	public Persona recuperarContrasena(String correo)throws Exception{
+		Persona persona = null;
+		try{
+			EntityManagerFactory emf=Persistence.createEntityManagerFactory("progra2");
+			EntityManager em=emf.createEntityManager();
+			TypedQuery<Persona> sql=em.createQuery("Select p From Persona p Where p.correo = :valor1",Persona.class);
+			sql.setParameter("valor1", correo);
+			
+			if(sql.getSingleResult().getCorreo()!=null){
+				persona= new Persona();
+				persona=sql.getSingleResult();
+			}
+			
+		}catch (Exception e){
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			return null;
+		}
+		return persona;
+	}
 		
 
 	

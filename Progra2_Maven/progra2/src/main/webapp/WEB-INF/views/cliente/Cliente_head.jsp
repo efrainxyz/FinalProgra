@@ -87,7 +87,7 @@
                     <li class=""><a href="inicioCli">Inicio</a>
                     </li>
              
-                    <li class=""><a href="catalogocli">Vehiculos</a>
+                    <li class=""><a href="vercatalogocliente">Vehiculos</a>
                     </li>
                     <li class=""><a href="micuenta">Mi Cuenta</a>
                     </li>

@@ -62,16 +62,15 @@ public class VistasController {
 		return new ModelAndView("/publico/Publico_registarcliente");
 	}
 	
-	@RequestMapping(value="/catalogo")
-	public ModelAndView catalogo(HttpServletResponse response) throws IOException{
-		return new ModelAndView("/publico/Publico_catalogodeproductos");
-	}
-	
 	@RequestMapping(value="/detallecatalogo")
 	public ModelAndView detallecatalogo(HttpServletResponse response) throws IOException{
 		return new ModelAndView("/publico/Publico_detalledeproducto");
 	}
 	
+	@RequestMapping(value="/recuperarcontra")
+	public ModelAndView recuperarcontra(HttpServletResponse response) throws IOException{
+		return new ModelAndView("/publico/Publico_recuperarcontrasena");
+	}	
 	
 	// ------------------>>>>>>>> VISTAS DE ADMINISTRADOR
 	@RequestMapping(value="/inicioAdm")

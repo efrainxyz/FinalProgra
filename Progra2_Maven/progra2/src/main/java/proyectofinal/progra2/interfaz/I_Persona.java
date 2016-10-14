@@ -12,4 +12,5 @@ public interface I_Persona {
 	public Persona listar(String dni) throws Exception;
 	public int  buscarCorreo(String correo);
 	public int buscarDni(String dni) throws Exception;
+	public Persona recuperarContrasena(String correo) throws Exception;
 }

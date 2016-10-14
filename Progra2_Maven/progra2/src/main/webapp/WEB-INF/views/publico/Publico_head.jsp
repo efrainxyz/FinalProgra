@@ -75,7 +75,7 @@
                             </p>
 
                         </form>
-						<p class="text-center text-muted"><a href="#"><strong>¿Olvidaste tu contraseña?</strong></a></p>
+						<p class="text-center text-muted"><a href="recuperarcontra"><strong>¿Olvidaste tu contraseña?</strong></a></p>
                         <p class="text-center text-muted">¿Aún no estás registrado? <a href="#"><strong>Registrate aquí. </strong></a>Es rápido y fácil, no te tomará mucho tiempo.</p>
 
                     </div>
@@ -115,7 +115,7 @@
                         <a href="nosotros">Nosotros</a>
                     </li>
                     <li class="nav navbar-nav navbar-left">
-                        <a href="catalogo">Vehiculos</a>
+                        <a href="verCatalogo">Vehiculos</a>
                     </li>
                    
                 </ul>

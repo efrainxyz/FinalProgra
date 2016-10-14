@@ -1,6 +1,7 @@
 package proyectofinal.progra2.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -200,5 +201,34 @@ public class autoController {
 		return model;
 	}
 	
+	@RequestMapping(value="/verCatalogo")
+	public ModelAndView listarmarcar(HttpServletResponse response,HttpServletRequest request) throws IOException{
+		ModelAndView model = new ModelAndView();
+		try {
+			List<TipoViajeAuto>listar1=dao.listarTipoviajeauto();
+			List<Auto> listar= dao.listarAutos();
+
+			//Para obtener el precio y funcione con el slider
+			List<Integer> precio= new ArrayList<Integer>();
+			
+			for (int i = 0; i < listar.size(); i++) {
+				precio.add(Integer.valueOf(listar.get(i).getPrecioDia().intValue()));
+				
+			}
+			model.addObject("precioAuto",precio);
+			System.out.println(precio);
+			//fin 
+			
+			model.addObject("listarjsp", listar);
+			model.addObject("listartipoviaje",listar1);
+			
+			model.setViewName("/publico/Publico_catalogodeproductos");
+			
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+		
+		return model;
+	}
 	
 }
