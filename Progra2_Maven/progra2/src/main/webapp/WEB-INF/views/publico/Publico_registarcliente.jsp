@@ -26,49 +26,50 @@
              			  <c:if test="${not empty mensaje1 }">
           						<div class="col-sm-12 form-group alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${mensaje1}</div>
              			 </c:if>  
-                        <form id="form" name="form" action="registroCliente"  method="post" >
+                        <form id="form" name="form" onsubmit="return comprobarClave()" action="registroCliente"  method="post" >
                         	<div class="row">
                         		<div class="col-sm-6">
 	                                <div class="form-group">
 		                                <label for="usuario">DNI (*)</label>
-		                                <input type="number" class="form-control" name="dni" id="dni" placeholder="Ingrese su DNI (usuario)">
+		                                <input type="number" onkeypress="return solonumerosCarr(event)" class="form-control" name="dni" required="required" id="dni" placeholder="Ingrese su DNI (usuario)">
 		                                <input type="hidden" name="idRol" id="rol" value="2">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
 	                                <div class="form-group">
 		                                <label for="contra1">Contraseña (*)</label>
-		                                <input type="password" class="form-control" name="contrasena" id="contrasena" maxlength="15" placeholder="Ingrese su contraseña">
+		                                <input type="password" class="form-control" name="contrasena"  required="required" id="pass1" maxlength="15" placeholder="Ingrese su contraseña">
+		                            	<p style="color:red" id="msj2"></p>
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
 	                                <div class="form-group">
 		                                <label for="contra2">Repita su contraseña (*)</label>
-		                                <input type="password" class="form-control" name="contrasena" id="contrasena" maxlength="15" placeholder="Ingrese su contraseña">
+		                                <input type="password" class="form-control" id="pass2" maxlength="15" required="required" placeholder="Ingrese su contraseña">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
 		                                <label for="nombre">Nombres (*)</label>
-		                                <input type="text" class="form-control" name="nombre" id="nombre" maxlength="45" placeholder="Ingrese sus nombres">
+		                                <input type="text" onkeypress="return sololetras(event)" class="form-control" name="nombre" id="nombre" required="required" maxlength="45" placeholder="Ingrese sus nombres">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
                                 	<div class="form-group">
 		                                <label for="apePat">Apellido Paterno (*)</label>
-		                                <input type="text" class="form-control" name="apellidoPaterno" id="apePat" maxlength="45" placeholder="Ingrese su apellido paterno">
+		                                <input type="text" onkeypress="return sololetras(event)" class="form-control" name="apellidoPaterno" id="apePat" maxlength="45" required="required" placeholder="Ingrese su apellido paterno">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
                                 	<div class="form-group">
 		                                <label for="apeMat">Apellido Materno (*)</label>
-		                                <input type="text" class="form-control" name="apellidoMaterno" id="apeMat" maxlength="45" placeholder="Ingrese su apellido materno">
+		                                <input type="text" onkeypress="return sololetras(event)" class="form-control" name="apellidoMaterno" id="apeMat" maxlength="45"  required="required" placeholder="Ingrese su apellido materno">
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
                                 	<div class="form-group">
 		                                <label for="correo">Correo (*)</label>
-		                                <input type="text" class="form-control" name="correo" id="correo" maxlength="45" placeholder="Ejemplo: example@gmail.com">
+		                                <input type="email" required="required" class="form-control" name="correo" id="correo" maxlength="45" placeholder="Ejemplo: example@gmail.com">
 		                            </div>
                                 </div>
                             </div>
@@ -129,7 +130,18 @@
     <script src="<%=request.getContextPath() %>/resources/js/bootstrap-hover-dropdown.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/owl.carousel.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/front.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/validaciones.js"></script>
     
+    <script type="text/javascript">
+function comprobarClave(){ 
+	if(document.getElementById("pass2").value!=document.getElementById("pass1").value){
+		document.getElementById('msj2').innerHTML = 'Las contraseñas no son iguales.';
+		return false
+	} else{
+		return true;
+	}
+}
+</script> 
 
 </body>
 
