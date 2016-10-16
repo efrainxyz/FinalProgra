@@ -93,9 +93,7 @@ public class autoController {
 								System.out.println("json " + new Gson().toJson(responseobj));	 
 					
 	}
-	
-	
-	
+
 	
 	@RequestMapping(value="/agregarAuto")
 	public ModelAndView agregar(HttpServletResponse response,TipoViajeAuto tipo,Auto auto,ModeloAuto modelo,Sede sede, String accion) throws IOException{
@@ -149,8 +147,6 @@ public class autoController {
 		
 		return model;
 	}
-	
-	
 	
 	
 	@RequestMapping(value="/listarModelo")
@@ -227,6 +223,39 @@ public class autoController {
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
+		
+		return model;
+	}
+	
+	@RequestMapping(value="/cambiarestado")
+	public ModelAndView cambiarestado(HttpServletResponse response,HttpServletRequest request, String matricula, int est) throws IOException{
+		ModelAndView model=new ModelAndView();
+		
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("usuario");
+			if(user!=null){
+				if(user.getRol().getNombre().equals("administrador")){
+					try {
+						boolean estado=dao.cambiarestadoauto(matricula, est);
+						List<Auto> listar=dao.listarAutos();
+						if(estado==false)
+						{
+							model.addObject("mensaje","no se actualizo el estado");
+						}
+						else{
+							model.addObject("listarjsp", listar);
+						}
+						model.setViewName("/administrador/Administrador_mantenerauto");
+					
+					} catch (Exception e) {
+						 System.out.println("probleman en el cambiar estado controller"+e.getMessage());
+					}
+				}
+			}else{
+				model.addObject("mensaje","Su sesion ha expirado, intente de nuevo.");
+				model.setViewName("/publico/Publico_paginaprincipal");
+			}
+		
 		
 		return model;
 	}

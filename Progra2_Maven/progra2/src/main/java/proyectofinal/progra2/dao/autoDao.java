@@ -125,6 +125,48 @@ public class autoDao implements I_Auto{
 		return listar;
 	}
 
+	@Override
+	public boolean cambiarestadoauto(String matricula, int est) {
+		boolean flag=false;
+		if(est==1){
+			
+			try {
+				EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+				EntityManager em= emf.createEntityManager();
+				em.getTransaction().begin();
+				Auto auto=em.find(Auto.class, matricula);
+				auto.setEstado("0");
+				em.merge(auto);
+				em.getTransaction().commit();
+				em.close();
+				flag=true;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+	
+			
+		}else if(est==0){
+			
+			try {
+				EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+				EntityManager em= emf.createEntityManager();
+				em.getTransaction().begin();
+				Auto auto=em.find(Auto.class, matricula);
+				auto.setEstado("1");
+				em.merge(auto);
+				em.getTransaction().commit();
+				em.close();
+				flag=true;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+	
+		}
+				
+		return flag;
+	}
+
+	
 	
 		
 	

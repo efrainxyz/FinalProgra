@@ -27,6 +27,7 @@
             		<div class="box" id="mantenerAuto">
             		
             		<h1>Lista de Autos</h1>
+            		<p>${mensaje}</p>
  
 					<table id="tabla" class="table table-hover table-bordered">
 						
@@ -41,7 +42,7 @@
 						 		<th style="text-align: center;" valign="middle">Número de pasajeros</th>
 						 		<th style="text-align: center;" valign="middle">Número de puertas</th>
 						 		<th style="text-align: center;" valign="middle">Modificar</th>
-						 		<th style="text-align: center;" valign="middle">Eliminar</th>
+						 		<th style="text-align: center;" valign="middle">Estado</th>
 						 			
 						 	</tr>
 						</thead>
@@ -59,7 +60,17 @@
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.nroPasajeros}</td>
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.nroPuertas}</td>
 		 						<td style="text-align: center; vertical-align:middle;"><button class="btn-large btn btn-primary" type="button" onClick="location.href='Administrador_modificarauto.jsp'"><b>Modificar</b></button></td>
-		 						<td style="text-align: center; vertical-align:middle;"><button class="btn-large btn btn-danger" type="button"><b>Eliminar</b></button>
+		 						<td style="text-align: center; vertical-align:middle;">
+		 							<c:if test="${listarjsp.estado=='1'}">
+		 							
+		 							<button class="btn-large btn btn-success" type="button"onClick="location.href='cambiarestado?matricula=${listarjsp.matricula}&est=${listarjsp.estado}'"><b>Deshabilitar</b></button>
+		 							</c:if>
+		 							<c:if test="${listarjsp.estado=='0'}">
+		 							 
+		 							<button class="btn-large btn btn-danger" type="button" onClick="location.href='cambiarestado?matricula=${listarjsp.matricula}&est=${listarjsp.estado}'"><b>Habilitar</b></button>
+		 							</c:if>
+		 						 
+		 						</td>
 						 			
 		 					</tr>
 					 		</c:forEach>
