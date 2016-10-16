@@ -27,7 +27,10 @@
             		<div class="box" id="mantenerAuto">
             		
             		<h1>Lista de Autos</h1>
-            		<p>${mensaje}</p>
+            		<c:if test="${not empty mensaje }">
+            		<p style="color:green;">${mensaje}</p>
+            		</c:if>
+            		
  
 					<table id="tabla" class="table table-hover table-bordered">
 						
@@ -59,7 +62,7 @@
 		 						<td style="text-align: center; vertical-align:middle;">${listarjsp.combustibleAuto}</td>
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.nroPasajeros}</td>
 								<td style="text-align: center; vertical-align:middle;">${listarjsp.nroPuertas}</td>
-		 						<td style="text-align: center; vertical-align:middle;"><button class="btn-large btn btn-primary" type="button" onClick="location.href='Administrador_modificarauto.jsp'"><b>Modificar</b></button></td>
+		 						<td style="text-align: center; vertical-align:middle;"><button class="btn-large btn btn-primary" type="button" onClick="location.href='modificarauto?accion=premodificar&id=${listarjsp.matricula}'"><b>Modificar</b></button></td>
 		 						<td style="text-align: center; vertical-align:middle;">
 		 							<c:if test="${listarjsp.estado=='1'}">
 		 							

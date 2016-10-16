@@ -20,6 +20,8 @@ public interface I_Auto{
 	 public List<TipoViajeAuto>listarTipoviajeauto();
 	 public List<ModeloAuto>listarModeloAuto(int id); 
 	 public boolean cambiarestadoauto(String idmatricula, int est);
+	 public int modificarauto(Auto auto);
+	 public Auto buscar(String id);
 	 
 	 
 }

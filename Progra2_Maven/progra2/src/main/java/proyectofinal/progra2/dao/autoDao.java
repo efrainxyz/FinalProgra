@@ -57,6 +57,39 @@ public class autoDao implements I_Auto{
 	}
 
 	@Override
+	public int modificarauto(Auto auto) {
+		int respuesta=0;
+		try {
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em=emf.createEntityManager();
+			em.getTransaction().begin();
+			em.merge(auto);
+			em.getTransaction().commit();
+			em.close();
+			respuesta=1;
+			
+		} catch (Exception e) {
+			System.out.println("ERROR "+e.getMessage());
+		}
+		
+		return respuesta;
+	}
+	@Override
+	public Auto buscar(String id) {
+		Auto auto=null;
+		try {
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em=emf.createEntityManager();
+			auto=em.find(Auto.class, id);
+			
+		} catch (Exception e) {
+			System.out.println("ERROR "+e.getMessage());
+		}
+		
+		return auto;
+	}
+	
+	@Override
 	public List<Sede> listarSede() {
 		List<Sede>listar=new ArrayList<Sede>();
 		try {

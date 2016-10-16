@@ -108,20 +108,26 @@ public class autoController {
 						auto.setSede(sede);
 						auto.setModeloAuto(modelo);
 						auto.setTipoViajeAuto(tipo);
-						auto.setEstado("0");
+						auto.setEstado("1");
 					
 						int respuesta=dao.agregarAuto(auto);
 						
-						List<Auto> listar= dao.listarAutos();
-						
-						if(respuesta!=1)
+						if(respuesta!=0)
 						{
+							
+							try {
+								List<Auto> listar= dao.listarAutos();
+								model.addObject("mensaje","se agrego");
+								model.addObject("listarjsp",listar);
+								model.setViewName("/administrador/Administrador_mantenerauto");
+
+							} catch (Exception e) {
+									System.out.println("ERRRO LISTAR LUEGO DE AGREGAR  "+e.getMessage());
+							}
+							
+													}else{
 							model.addObject("mensaje","no se agrego");
 							model.setViewName("/administrador/Administrador_agregarauto");
-						}else{
-							model.addObject("mensaj	e","se agrego");
-							model.addObject("listarjsp",listar);
-							model.setViewName("/administrador/Administrador_mantenerauto");
 						}
 						
 					} catch (Exception e) {
@@ -148,6 +154,73 @@ public class autoController {
 		return model;
 	}
 	
+	@RequestMapping(value="/modificarauto")
+	public ModelAndView modificar(HttpServletResponse response,TipoViajeAuto tipo,Auto auto,ModeloAuto modelo,Sede sede, String accion, String id) throws IOException{
+		ModelAndView model = new ModelAndView();
+		
+		System.out.println("LA ACCION QUE LLEGA... "+accion);
+		try {
+			
+			if(accion.equals("modificar"))
+				{
+					try {
+						auto.setSede(sede);
+						auto.setModeloAuto(modelo);
+						auto.setTipoViajeAuto(tipo);
+						auto.setEstado("1");
+					
+						int respuesta=dao.agregarAuto(auto);
+						
+						if(respuesta!=0)
+						{
+							
+							try {
+								List<Auto> listar= dao.listarAutos();
+								model.addObject("mensaje","se agrego");
+								model.addObject("listarjsp",listar);
+								model.setViewName("/administrador/Administrador_mantenerauto");
+
+							} catch (Exception e) {
+									System.out.println("ERRRO LISTAR LUEGO DE AGREGAR  "+e.getMessage());
+							}
+							
+													}else{
+							model.addObject("mensaje","no se agrego");
+							model.setViewName("/administrador/Administrador_agregarauto");
+						}
+						
+					} catch (Exception e) {
+						System.out.println("ERROR agregar"+e.getMessage());
+					}
+						
+						
+				}
+			else if(accion.equals("premodificar"))
+				{
+				try {
+					System.out.println("la placa que llega "+id);
+					Auto autobuscar=dao.buscar(id);
+					List<TipoViajeAuto>listar1=dao.listarTipoviajeauto();
+					List<MarcaAuto>listar2=dao.listarMarcaauto();
+					List<Sede>listar3=dao.listarSede();	
+					model.addObject("bean",autobuscar);
+					model.addObject("listartipoviaje",listar1);
+					model.addObject("listarmarcaauto",listar2);
+					model.addObject("listarsede",listar3);
+					model.setViewName("/administrador/Administrador_modificarauto");
+				
+				} catch (Exception e) {
+				  System.out.println("EROR PRE MODIFICAR "+e.getMessage());
+				}
+					
+				}
+			
+		} catch (Exception e) {
+			System.out.print("ERROR  todo"+e.getMessage());
+		}
+		
+		return model;
+	}
 	
 	@RequestMapping(value="/listarModelo")
 	public void listarModelo(HttpServletResponse response,HttpServletRequest request,int idmarca) throws IOException{

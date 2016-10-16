@@ -38,7 +38,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nro_pasajero">Número de pasajeros</label>
-                                    <input type="number" class="form-control" id="nro_pasajero" name="nroPasajero" min="1" max="99" placeholder="Ingrese el número de pasajeros">
+                                    <input type="number" class="form-control" id="nro_pasajero" name="nroPasajeros" min="1" max="99" placeholder="Ingrese el número de pasajeros">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -51,6 +51,7 @@
                                 <div class="form-group">
                                     <label for="aire_acon">¿Tiene Aire Acondicionado?</label>
                                     <select class="form-control" id="aire_acon" name="aireacondicionado">
+                                        <option>Seleccione</option>
                                         <option value="si">Sí</option>
                                         <option value="no">No</option>
                                     </select>
@@ -81,6 +82,7 @@
                                 <div class="form-group">
                                     <label for="marca_auto">Marca de Auto</label>
                                     <select class="form-control" id="marca_auto" onchange="listarModelo();">
+                                        	<option>Seleccione</option>
                                         <c:if test="${not empty listarmarcaauto}">
 		        							<c:forEach var="listarmarcaauto" items="${listarmarcaauto}">
 	               		 						<option value="${listarmarcaauto.idMarcaAuto}">${listarmarcaauto.marca}</option>	        		
@@ -101,6 +103,7 @@
                                 <div class="form-group">
                                     <label for="categoria_auto">Categoría de Auto</label>
                                   	<select class="form-control" id="aire_acon" name="categoriaAuto">
+                                        <option>Seleccione</option>
                                         <option value="auto">Auto</option>
                                         <option value="camioneta">Camioneta</option>
                                         <option value="vans">Vans</option>
@@ -111,6 +114,7 @@
                                 <div class="form-group">
                                     <label for="tipo_viaje">Tipo de Viaje</label>
                                     <select class="form-control" id="tipo_viaje" name="idTipoViajeAuto">
+                                       	<option>Seleccione</option>
                                        <c:if test="${not empty listartipoviaje}">
 		        							<c:forEach var="listartipoviaje" items="${listartipoviaje}">
 	               		 						<option value="${listartipoviaje.idTipoViajeAuto}">${listartipoviaje.tipo}</option>	        		
@@ -124,7 +128,7 @@
                                     <label for="transmision">Transmisión</label>
                                     <select class="form-control" id="transmision" name="transmision">
                                         <option>Seleccione</option>
-                                        <option value="transmision">Transmisión</option>
+                                        <option value="automatico">Automatico</option>
                                         <option value="mecanico">Mecánico</option>
                                     </select>
                                 </div>
@@ -174,7 +178,7 @@
                                     <button type="submit" class="btn btn-primary">Agregar Auto
                                     </button>
                                 </div>
-                        </div>
+                        </div>	
                     </form>
                     
                 
