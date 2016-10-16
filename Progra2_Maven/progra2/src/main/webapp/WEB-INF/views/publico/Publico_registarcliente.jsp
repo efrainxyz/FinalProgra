@@ -31,8 +31,10 @@
                         		<div class="col-sm-6">
 	                                <div class="form-group">
 		                                <label for="usuario">DNI (*)</label>
-		                                <input type="number" onkeypress="return solonumerosCarr(event)" class="form-control" name="dni" required="required" id="dni" placeholder="Ingrese su DNI (usuario)">
+		                                <input type="number" min="10000000" max="99999999" onkeypress="return solonumerosCarr(event)" class="form-control" id="dni" name="dni" required="required" id="dni" placeholder="Ingrese su DNI (usuario)">
+		                                <p style="color:red" id="msj3"></p>
 		                                <input type="hidden" name="idRol" id="rol" value="2">
+		                           		
 		                            </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -137,7 +139,10 @@ function comprobarClave(){
 	if(document.getElementById("pass2").value!=document.getElementById("pass1").value){
 		document.getElementById('msj2').innerHTML = 'Las contraseñas no son iguales.';
 		return false
-	} else{
+	}else if(10000000<document.getElementById("dni").value<99999999){
+		document.getElementById('msj3').innerHTML = 'El dni no es valido.';
+		return false;
+	}else{
 		return true;
 	}
 }
