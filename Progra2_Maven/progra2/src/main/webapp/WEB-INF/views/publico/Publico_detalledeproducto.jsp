@@ -10,7 +10,7 @@
                         <div class="col-sm-4">
                         	<div class="box">
 	                            <div id="mainImage" >
-	                                <img src="<%=request.getContextPath() %>/resources/img/audi_rzero1.jpg" alt="" class="img-responsive">
+	                                <img src="${bean.imagen}" alt="" class="img-responsive">
 	                            </div>
 								<hr>
 								<button class="btn btn-default btn-sm btn-primary" onclick="return scriptInfo(this.form)"><i class="fa fa-pencil"></i> Reservar</button>
@@ -31,43 +31,35 @@
                                    
                                             <tr>
                                             	<td><b>Marca</b></td>
-                                                <td>Kia</td>
+                                                <td>${bean.modeloAuto.marcaAuto.marca}</td>
                                             </tr>
                                             <tr>
                                                 <td><b>Modelo</b></td>
-                                                <td>Picante o similar</td>
+                                                <td>${bean.modeloAuto.modelo}</td>
                                             </tr>
                                             <tr>
-                                                <td><b>Categoria</b></td>
-                                                <td>economico</td>
-                                            </tr>
-                                            <tr>
-                                                <td><b>Tipo</b></td>
-                                                <td>Mecanico</td>
+                                                <td><b>Transmision</b></td>
+                                                <td>${bean.transmision}</td>
                                             </tr>
                                             <tr>
                                                 <td><b>Combustible</b></td>
-                                                <td>Gasolina</td>
-                                            </tr>
-                                            <tr>
-                                                <td><b>Combustible</b></td>
-                                                <td>Gasolina</td>
+                                                <td>${bean.combustibleAuto}</td>
                                             </tr>
                                             <tr>
                                                 <td><b>Número de puerta</b></td>
-                                                <td>5</td>
+                                                <td>${bean.nroPuertas}</td>
                                             </tr>
                                              <tr>
-                                                <td><b>capacidad de pasajeros</b></td>
-                                                <td>5</td>
+                                                <td><b>Capacidad de pasajeros</b></td>
+                                                <td>${bean.nroPasajeros}</td>
                                             </tr>
                                             <tr>
                                                 <td><b>Aire acondicionado</b> </td>
-                                                <td>si</td>
+                                                <td>${bean.aireacondicionado}</td>
                                             </tr>
                                             <tr>
                                                 <td><b>Descripcion </b></td>
-                                                <td>radio CD/MP3, Sistema antirobo, cierre centralizado, espejo retrovisor,frenos hidraulicos , direccion asistida.</td>
+                                                <td>${bean.descripcion}</td>
                                             </tr>
                                             
                                         </tbody>
@@ -80,7 +72,7 @@
 
                      </div>
                   </div>
-                  <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="reservarInfo">Usted debe Iniciar Sesión o <a href="Publico_registarcliente.jsp">Registrarse</a> para realizar una reserva.</div>
+                  <div class="col-sm-12 form-group alert alert-danger" style="display: none;" id="reservarInfo">Usted debe <a href="#" data-toggle="modal" data-target="#login-modal">Iniciar Sesión</a> o <a href="registrarse">Registrarse</a> para realizar una reserva.</div>
                </div>
             </div>
         </div>
@@ -88,14 +80,16 @@
 		<jsp:include page="Publico_footer.jsp" flush="true"/>
     </div>
   
-    <script src="<%=request.getContextPath() %>/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery.cookie.js"></script>
-    <script src="<%=request.getContextPath() %>/js/waypoints.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/modernizr.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap-hover-dropdown.js"></script>
-    <script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/front.js"></script>
+       <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.cookie.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/waypoints.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/modernizr.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
+     <script src="<%=request.getContextPath()%>/resources/js/auto.js"></script>
+
 
 
 </body>

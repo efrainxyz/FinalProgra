@@ -50,14 +50,16 @@
 
 </div>
   
-    <script src="<%=request.getContextPath() %>/js/jquery-1.11.0.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery.cookie.js"></script>
-    <script src="<%=request.getContextPath() %>/js/waypoints.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/modernizr.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap-hover-dropdown.js"></script>
-    <script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/front.js"></script>
+       <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.cookie.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/waypoints.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/modernizr.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
+     <script src="<%=request.getContextPath()%>/resources/js/auto.js"></script>
+
 
 
 </body>

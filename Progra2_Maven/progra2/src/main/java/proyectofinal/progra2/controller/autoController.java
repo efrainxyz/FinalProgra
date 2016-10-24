@@ -300,6 +300,23 @@ public class autoController {
 		return model;
 	}
 	
+	
+	@RequestMapping(value="detalleproducto")
+	public ModelAndView detalleproducto(HttpServletResponse response,String matricula) throws IOException{
+		ModelAndView model = new ModelAndView();
+		try {
+			Auto bean=dao.buscar(matricula);
+			model.addObject("bean",bean);
+			model.setViewName("/publico/Publico_detalledeproducto");
+			
+		} catch (Exception e) {
+			System.out.print("error en el detalle "+e.getMessage());
+		}
+		
+		return model;
+	}
+	
+	
 	@RequestMapping(value="/cambiarestado")
 	public ModelAndView cambiarestado(HttpServletResponse response,HttpServletRequest request, String matricula, int est) throws IOException{
 		ModelAndView model=new ModelAndView();

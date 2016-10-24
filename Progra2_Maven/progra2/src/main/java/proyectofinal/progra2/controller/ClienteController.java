@@ -223,10 +223,7 @@ public class ClienteController {
 		return new ModelAndView("/cliente/Cliente_contactenos");
 	}
 	
-	@RequestMapping(value="detalleproducto")
-	public ModelAndView detalleproducto(HttpServletResponse response) throws IOException{
-		return new ModelAndView("/cliente/Cliente_detalledeproducto");
-	}
+	
 	
 	@RequestMapping(value="reserva1")
 	public ModelAndView reserva1(HttpServletResponse response) throws IOException{
