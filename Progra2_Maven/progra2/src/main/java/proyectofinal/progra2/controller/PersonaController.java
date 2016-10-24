@@ -32,6 +32,8 @@ public class PersonaController {
 	private personaDao dao;
 	@Autowired
 	VistasController vistas;
+	@Autowired
+	AdministradorController admin;
 	
 	//para el correo de recuperacion
 	static Properties mailServerProperties;
@@ -59,7 +61,7 @@ public class PersonaController {
 						session.setAttribute("usuario",ses);
 						System.out.println("ROOOOOOOOOOOOL !!!!!!!!!  "+ses.getRol().getNombre());
 						if(ses.getRol().getNombre().equals("administrador")){
-							return vistas.inicioAdm(response);
+							return admin.homeCliente(response, request);
 						}else if(ses.getRol().getNombre().equals("cliente")){
 							model.setViewName("cliente/Cliente_paginaprincipal");
 						}

@@ -28,19 +28,19 @@
             		<p class="lead">Por favor complete los campos para realizar el registro del pago de una reserva.</p>
             		<hr>
             		
-            		<form>
+            		<form name="formbuscarAlquiler" target="Buscar Alquiler" action="buscaralquiler" method="get" onSubmit="window.open('','Buscar Alquiler','toolbar=no,location=no,menubar=no,scrollbars=yes,height=600,width=900')">
             			<div class="row">
             				<div class="col-sm-6 col-md-3">
             					<div class="form-group">
-                                    <select class="form-control" id="criterio">
-                                    	<option>DNI</option>
-                                    	<option>Código de reserva</option>
+                                    <select class="form-control" id="criterio" name="criterio">
+                                    	<option value="1">DNI</option>
+                                    	<option value="2">Código de reserva</option>
                                     </select>
                                 </div>
             				</div>
             				<div class="col-sm-6 col-md-3">
             					<div class="form-group">
-	            					<input type="text" class="form-control" id="criterioBusqueda" placeholder="Ingrese el criterio de búsqueda">
+	            					<input type="text" class="form-control" id="criterioBusqueda" name="criterioBusqueda" placeholder="Ingrese el criterio de búsqueda" required>
             					</div>
             				</div>
             				<div class="col-sm-6 col-md-3">
@@ -60,43 +60,43 @@
 		                                <tbody>
 		                                	<tr>
 		                                        <th>Código de reserva</th>
-		                                        <td>R-0001</td>
+		                                        <td><input class="form-control input-sm" type="text" name="codRe"></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>DNI</th>
-		                                        <td>75228582</td>
+		                                        <td><input class="form-control input-sm" type="text" name="dni"></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Nombre</th>
-		                                        <td>Estefany Paola</td>
+		                                        <td><input class="form-control input-sm" type="text" name="nom"></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Apellido Paterno</th>
-		                                        <td>Cerrón</td>
+		                                        <td><input class="form-control input-sm" type="text" name="apeP"></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Apellido Materno</th>
-		                                        <td>Gonzales</td>
+		                                        <td><input class="form-control input-sm" type="text" name="apeM"></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Placa</th>
-		                                        <td>IH8-PPL</td>
+		                                        <td><input class="form-control input-sm" type="text" name="placa"></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Marca de Auto</th>
-		                                        <td>Toyota</td>
+		                                        <td><input class="form-control input-sm" type="text" name="marca"></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Modelo de Auto</th>
-		                                        <td>RV4</td>
+		                                        <td><input class="form-control input-sm" type="text" name="modelo"></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Detalle</th>
-		                                        <td>Detalle</td>
+		                                        <td><input class="form-control input-sm" type="text" name="det"></td>
 		                                    </tr>
 		                                    <tr class="total">
 		                                        <th>Monto a Pagar</th>
-		                                        <td>S/. 204.84</td>
+		                                        <td><input class="form-control input-sm" type="text" name="monto"></td>
 		                                    </tr>
 		                                </tbody>
 		                            </table>
