@@ -23,7 +23,12 @@
             	<div class="col-sm-12">
             		
             		<div class="box" id="registrarPago">
-            		
+            		<c:if test="${not empty mensaje }">
+	          			<div class="col-sm-12 form-group alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${mensaje}</div>
+	              	</c:if>
+	              	<c:if test="${not empty mensaje2}">
+	          			<div class="col-sm-12 form-group alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${mensaje2}</div>
+	              	</c:if> 
             		<h1>Registro de pago</h1>
             		<p class="lead">Por favor complete los campos para realizar el registro del pago de una reserva.</p>
             		<hr>
@@ -34,23 +39,25 @@
             					<div class="form-group">
                                     <select class="form-control" id="criterio" name="criterio">
                                     	<option value="1">DNI</option>
-                                    	<option value="2">Código de reserva</option>
+                                    	<option value="2">Código de alquiler</option>
                                     </select>
                                 </div>
             				</div>
             				<div class="col-sm-6 col-md-3">
             					<div class="form-group">
-	            					<input type="text" class="form-control" id="criterioBusqueda" name="criterioBusqueda" placeholder="Ingrese el criterio de búsqueda" required>
+	            					<input type="number" class="form-control" min="0" onkeypress="return isNumber(event)" id="criterioBusqueda" name="criterioBusqueda" placeholder="Ingrese el criterio de búsqueda" required>
             					</div>
             				</div>
             				<div class="col-sm-6 col-md-3">
             					<div class="form-group">
-	            					<button class="btn-large btn btn-primary" type="submit" id="botonCriterio"><b>Buscar</b></button>
+	            					<button class="btn-large btn btn-primary" type="submit" id="botonCriterio" onclick="return verificarCriterio();"><b>Buscar</b></button>
             					</div>
             				</div>
             			
             			</div>
+            			</form>
             			
+            			<form name="regPago" action="registrarpago" method="post">
             			<div class="row">
             			
 	            			<div class="col-sm-6">
@@ -60,43 +67,43 @@
 		                                <tbody>
 		                                	<tr>
 		                                        <th>Código de reserva</th>
-		                                        <td><input class="form-control input-sm" type="text" name="codRe"></td>
+		                                        <td><input class="form-control input-sm" type="text" name="idAlquiler" id="codRe" value="" readonly></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>DNI</th>
-		                                        <td><input class="form-control input-sm" type="text" name="dni"></td>
+		                                        <td><input class="form-control input-sm" type="text" name="dni" value="" readonly></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Nombre</th>
-		                                        <td><input class="form-control input-sm" type="text" name="nom"></td>
+		                                        <td><input class="form-control input-sm" type="text" name="nom" value="" readonly></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Apellido Paterno</th>
-		                                        <td><input class="form-control input-sm" type="text" name="apeP"></td>
+		                                        <td><input class="form-control input-sm" type="text" name="apeP" value="" readonly></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Apellido Materno</th>
-		                                        <td><input class="form-control input-sm" type="text" name="apeM"></td>
+		                                        <td><input class="form-control input-sm" type="text" name="apeM" value="" readonly></td>
 		                                    </tr>
 		                                    <tr>
-		                                        <th>Placa</th>
-		                                        <td><input class="form-control input-sm" type="text" name="placa"></td>
+		                                        <th>Matricula</th>
+		                                        <td><input class="form-control input-sm" type="text" name="placa" value="" readonly></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Marca de Auto</th>
-		                                        <td><input class="form-control input-sm" type="text" name="marca"></td>
+		                                        <td><input class="form-control input-sm" type="text" name="marca" value="" readonly></td>
 		                                    </tr>
 		                                    <tr>
 		                                        <th>Modelo de Auto</th>
-		                                        <td><input class="form-control input-sm" type="text" name="modelo"></td>
+		                                        <td><input class="form-control input-sm" type="text" name="modelo" value="" readonly></td>
 		                                    </tr>
 		                                    <tr>
-		                                        <th>Detalle</th>
-		                                        <td><input class="form-control input-sm" type="text" name="det"></td>
+		                                        <th>Fecha de Reserva</th>
+		                                        <td><input class="form-control input-sm" type="text" name="fRe" value="" readonly></td>
 		                                    </tr>
 		                                    <tr class="total">
 		                                        <th>Monto a Pagar</th>
-		                                        <td><input class="form-control input-sm" type="text" name="monto"></td>
+		                                        <td><input class="form-control input-sm" type="text" name="monto" value="" readonly></td>
 		                                    </tr>
 		                                </tbody>
 		                            </table>
@@ -105,24 +112,31 @@
 	            			
 	            			<div class="col-sm-6">
 	            				<h3>Detalle del pago</h3>
+	            				
 	            				<div class="col-sm-12">
 	                            	<div class="form-group">
 	                                	<label for="monto_ingresar">Monto a ingresar</label>
-	                                	<input type="text" class="form-control" id="monto_ingresar">
+	                                	<input type="number" class="form-control" id="montoIngresar" name="montoIngresar">
 	                                </div>
 	                            </div>
 	                            <div class="col-sm-12">
 	                                <div class="form-group">
 	                                	<label for="monto_pagar">Monto a pagar</label>
-	                                    <input type="text" class="form-control" id="monto_pagar" disabled>
+	                                    <input type="text" class="form-control" id="montoPagar" name="montoPagar" value="" readonly>
 	                                </div>
 	                            </div>
 								<div class="col-sm-12">
 	                                <div class="form-group">
 	                                    <label for="vuelto">Vuelto</label>
-	                                    <input type="text" class="form-control" id="vuelto" disabled>
+	                                    <input type="text" class="form-control" id="vuelto" name="vuelto" value="" readonly>
 	                                </div>
 	                            </div>
+	                            <div class="col-sm-12">
+	                            	<div class="form-group pull-right">
+		                            	<button type="button" onclick="calcularVuelto();" class="btn btn-primary">Calcular</button>
+	                            	</div>
+	                            </div>
+	                            
 	            			</div>
 	            			
                     	</div>
@@ -135,11 +149,8 @@
                                     </button>
                                 </div>
                         </div>
-                    </form>
-            		
- 				
-					
-					
+                   		</form>
+				
               		</div>
              
            		</div>
@@ -156,7 +167,51 @@
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
-
+	<script>
+	function calcularVuelto(){
+		var montoIn= parseInt($("#montoIngresar").val());
+		var montoPa= parseInt($("#montoPagar").val());
+		var vueltoPago=0;
+		
+		if(montoPa==""){
+			alert("Primero debe realizar la búsqueda de su alquiler.");
+		} else if (montoIn==""){
+			alert("Por favor ingrese un valor a Monto a Ingresar.");
+		} else if (montoPa>montoIn){
+			alert("El monto a Ingresar debe ser mayor o igual al monto a Pagar.");
+		} else {
+			vueltoPago= montoIn - montoPa;
+			$("#vuelto").attr("value",parseInt(vueltoPago));
+		}
+	}
+	</script>
+	<script>
+	function verificarCriterio(){
+		var tipoCriterio= $("#criterio").val();
+		var criterio= $("#criterioBusqueda").val();
+		console.log(tipoCriterio);
+		console.log(criterio);
+		
+		if(tipoCriterio==1){
+			if(criterio.length<8 || criterio.length>8){
+				alert("El DNI debe tener 8 caracteres.")
+				return false;
+			}
+			
+		} 
+		return true;
+	}
+	</script>
+	<script>
+	function isNumber(evt) {
+	    evt = (evt) ? evt : window.event;
+	    var charCode = (evt.which) ? evt.which : evt.keyCode;
+	    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+	        return false;
+	    }
+	    return true;
+	}
+	</script>
 </body>
 
 </html>

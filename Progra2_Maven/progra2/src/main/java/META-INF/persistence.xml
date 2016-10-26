@@ -10,6 +10,7 @@
 		<class>proyectofinal.progra2.bean.Distrito</class>
 		<class>proyectofinal.progra2.bean.MarcaAuto</class>
 		<class>proyectofinal.progra2.bean.ModeloAuto</class>
+		<class>proyectofinal.progra2.bean.Pago</class>
 		<class>proyectofinal.progra2.bean.Persona</class>
 		<class>proyectofinal.progra2.bean.Provincia</class>
 		<class>proyectofinal.progra2.bean.RequerimientoEspecial</class>

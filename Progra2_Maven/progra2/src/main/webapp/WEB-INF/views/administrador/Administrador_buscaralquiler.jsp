@@ -80,10 +80,18 @@
 					 			<td style="text-align: center; vertical-align:middle;">${listar.montoAPagar}</td>
 					 			<td style="text-align: center; vertical-align:middle;">
 					 			<button class="btn-large btn btn-primary" type="button" onClick="
-					 			window.opener.document.all.codigoProveedor.value='1';
-  								window.opener.document.all.razonSocial.value='2';
-  								window.opener.document.all.direccion.value='3';
-  								window.opener.document.all.idProveedor.value='4';window.close()"><b>Seleccionar</b></button>
+					 			window.opener.document.all.idAlquiler.setAttribute('value','${listar.idAlquiler}');
+  								window.opener.document.all.dni.setAttribute('value','${listar.persona.dni}');
+  								window.opener.document.all.nom.setAttribute('value','${listar.persona.nombre}');
+  								window.opener.document.all.apeP.setAttribute('value','${listar.persona.apellidoPaterno}');
+  								window.opener.document.all.apeM.setAttribute('value','${listar.persona.apellidoMaterno}');
+  								window.opener.document.all.placa.setAttribute('value','${listar.auto.matricula}');
+  								window.opener.document.all.marca.setAttribute('value','${listar.auto.modeloAuto.marcaAuto.marca}');
+  								window.opener.document.all.modelo.setAttribute('value','${listar.auto.modeloAuto.modelo}');
+  								window.opener.document.all.fRe.setAttribute('value','${listar.fechaReserva}');
+  								window.opener.document.all.monto.setAttribute('value','${listar.montoAPagar}');
+  								window.opener.document.all.montoPagar.setAttribute('value','${listar.montoAPagar}');
+  								window.close()"><b>Seleccionar</b></button>
 					 			</td>
 					 		</tr>
 				 			</c:forEach>

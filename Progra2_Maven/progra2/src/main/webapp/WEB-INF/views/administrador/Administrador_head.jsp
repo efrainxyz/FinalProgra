@@ -80,7 +80,7 @@
 
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="listarauto">Mantener Auto</a></li>
-                  	<li><a href="registrarpago">Registrar Pago</a>
+                  	<li><a href="vistaregpago">Registrar Pago</a>
                       
                     </li>
                 </ul>
