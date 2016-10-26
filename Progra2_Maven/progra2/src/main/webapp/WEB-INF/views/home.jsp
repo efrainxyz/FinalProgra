@@ -9,6 +9,6 @@
 </head>
 <body>
 	<a href="listarAuto">listar auto</a>
-	<!-- Mensaje  -->
+	<!-- Mensaje 2 -->
 </body>
 </html>
