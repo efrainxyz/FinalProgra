@@ -42,8 +42,8 @@
     <link href="<%=request.getContextPath()%>/resources/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
 	<!-- Para el slider-->
     <link href="<%=request.getContextPath()%>/resources/css/slider.css" rel="stylesheet">
-
-
+	<!-- Jquery UI -->
+	<link href="<%=request.getContextPath()%>/resources/css/jquery-ui.min.css" rel="stylesheet">
 
 </head>
 <div id="top">

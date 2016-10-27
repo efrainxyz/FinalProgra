@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>  
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%Persona user=(Persona) session.getAttribute("usuario");%>
 <%if(user==null){
 	request.setAttribute("mensaje", "No inicio sesión");
@@ -75,8 +76,8 @@
 					 			<td style="text-align: center; vertical-align:middle;">${listar.idAlquiler}</td>
 					 			<td style="text-align: center; vertical-align:middle;">${listar.persona.nombre}</td>
 					 			<td style="text-align: center; vertical-align:middle;">${listar.auto.matricula}</td>
-					 			<td style="text-align: center; vertical-align:middle;">${listar.fechaSalida}</td>
-					 			<td style="text-align: center; vertical-align:middle;">${listar.fechaRetorno}</td>
+					 			<td style="text-align: center; vertical-align:middle;"><fmt:formatDate value="${listar.fechaSalida}" pattern="dd/MM/yyyy hh:mm"/></td>
+					 			<td style="text-align: center; vertical-align:middle;"><fmt:formatDate value="${listar.fechaRetorno}" pattern="dd/MM/yyyy hh:mm"/></td>
 					 			<td style="text-align: center; vertical-align:middle;">${listar.montoAPagar}</td>
 					 			<td style="text-align: center; vertical-align:middle;">
 					 			<button class="btn-large btn btn-primary" type="button" onClick="
@@ -88,7 +89,7 @@
   								window.opener.document.all.placa.setAttribute('value','${listar.auto.matricula}');
   								window.opener.document.all.marca.setAttribute('value','${listar.auto.modeloAuto.marcaAuto.marca}');
   								window.opener.document.all.modelo.setAttribute('value','${listar.auto.modeloAuto.modelo}');
-  								window.opener.document.all.fRe.setAttribute('value','${listar.fechaReserva}');
+  								window.opener.document.all.fRe.setAttribute('value','<fmt:formatDate value="${listar.fechaReserva}" pattern="dd/MM/yyyy"/>');
   								window.opener.document.all.monto.setAttribute('value','${listar.montoAPagar}');
   								window.opener.document.all.montoPagar.setAttribute('value','${listar.montoAPagar}');
   								window.close()"><b>Seleccionar</b></button>

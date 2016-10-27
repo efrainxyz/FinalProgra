@@ -83,7 +83,7 @@ public class AdministradorController {
 						listar= dao1.listarAlquilerxCliente(criterioBusqueda);
 					} else{ //Se ingreso codigo de reserva
 						int codigoReserva = Integer.parseInt(criterioBusqueda);
-						listar = dao.listarAlquilerXCodigo(codigoReserva);
+						listar = dao.listarAlquilerRegistrarPago(codigoReserva);
 					}
 									
 					

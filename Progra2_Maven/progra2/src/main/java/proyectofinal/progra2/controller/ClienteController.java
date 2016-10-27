@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import proyectofinal.progra2.bean.Alquiler;
+import proyectofinal.progra2.bean.Alquilerxrequerimiento;
 import proyectofinal.progra2.bean.Auto;
 import proyectofinal.progra2.bean.Persona;
 import proyectofinal.progra2.bean.TipoViajeAuto;
@@ -283,8 +284,35 @@ public class ClienteController {
 	
 	
 	@RequestMapping(value="verdetalleorden")
-	public ModelAndView verdetalleorden(HttpServletResponse response) throws IOException{
-		return new ModelAndView("/cliente/Cliente_verdetalledeorden");
+	public ModelAndView verdetalleorden(HttpServletResponse response, HttpServletRequest request) throws IOException{
+		ModelAndView model=new ModelAndView();
+		
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("usuario");
+			if(user!=null){
+				if(user.getRol().getNombre().equals("cliente")){
+					try {
+						int codigoAlquiler= Integer.parseInt(request.getParameter("idAlquiler"));
+						
+						List<Alquiler> listar = dao.listarAlquilerxCodigo(codigoAlquiler);
+						List<Alquilerxrequerimiento> listar2= dao.listarDetalleAlquiler(codigoAlquiler);
+						
+						model.addObject("listar",listar);
+						model.addObject("listardet",listar2);
+						
+						model.setViewName("/cliente/Cliente_verdetalledeorden");
+						
+					} catch (Exception e) {
+						System.out.print(e.getMessage());
+					}
+				}
+			}else{
+				model.addObject("mensaje","Su sesion ha expirado, por favor ingrese de nuevo.");
+				model.setViewName("/publico/Publico_paginaprincipal");
+			}
+		
+		
+		return model;
 	}
 	
 	@RequestMapping(value="verorden")
@@ -292,6 +320,43 @@ public class ClienteController {
 		return new ModelAndView("/cliente/Cliente_verlistadeorden");
 	}
 	
+	@RequestMapping(value="/cancelarreserva")
+	public ModelAndView cancelarreserva(HttpServletResponse response,HttpServletRequest request) throws IOException{
+		ModelAndView model=new ModelAndView();
+		
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("usuario");
+			if(user!=null){
+				if(user.getRol().getNombre().equals("cliente")){
+					try {
+						int resultado=0;
+						int codigoAl= Integer.parseInt(request.getParameter("idAlquiler"));
+						resultado= dao.cancelarReserva(codigoAl);
+						String dni=user.getDni();
+						List<Alquiler> lista=dao.listarAlquilerxCliente(dni);
+						model.addObject("lista",lista);
+						
+						if(resultado==0)
+						{
+							model.addObject("mensaje","Error. No se pudo cancelar la reserva.");	
+						}
+						else{
+							model.addObject("mensaje1","Reserva cancelada satisfactoriamente.");
+						}
+						model.setViewName("/cliente/Cliente_verlistadeorden");
+					
+					} catch (Exception e) {
+						 System.out.println("Error en el Controller Cliente - Cancelar Reserva: "+e.getMessage());
+					}
+				}
+			}else{
+				model.addObject("mensaje","Su sesion ha expirado, intente de nuevo.");
+				model.setViewName("/publico/Publico_paginaprincipal");
+			}
+		
+		
+		return model;
+	}
 	
 }
 

@@ -18,7 +18,7 @@ import proyectofinal.progra2.interfaz.I_Administrador;
 public class AdministradorDao implements I_Administrador {
 
 	@Override
-	public List<Alquiler> listarAlquilerXCodigo(int codigo) {
+	public List<Alquiler> listarAlquilerRegistrarPago(int codigo) {
 		// TODO Auto-generated method stub
 		List<Alquiler> listar= new ArrayList<Alquiler>();
 		try {

@@ -9,7 +9,7 @@ import proyectofinal.progra2.bean.Pago;
 
 @Service
 public interface I_Administrador {
-	public List<Alquiler> listarAlquilerXCodigo(int codigo);
+	public List<Alquiler> listarAlquilerRegistrarPago(int codigo);
 	public int registrarPago(Pago pago);
 	public int verificarPago(Alquiler alquiler);
 }

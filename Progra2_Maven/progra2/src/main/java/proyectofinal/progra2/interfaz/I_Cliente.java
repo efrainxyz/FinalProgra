@@ -15,7 +15,6 @@ public interface I_Cliente {
 	public int actualizardatospersonales(Persona bean, String dni) throws Exception;
 	public  List<Alquiler> listarAlquilerxCliente(String dni);
 	public List<Alquilerxrequerimiento> listarDetalleAlquiler(int idAlquiler);
-	
-	
-
+	public List<Alquiler> listarAlquilerxCodigo(int codigo);
+	public int cancelarReserva(int idAlquiler) throws Exception;
 }

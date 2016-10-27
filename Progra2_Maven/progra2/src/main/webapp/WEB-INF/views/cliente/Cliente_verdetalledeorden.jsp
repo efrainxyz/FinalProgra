@@ -1,5 +1,6 @@
 <%@page import="proyectofinal.progra2.bean.Persona"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>  
 <%Persona user=(Persona) session.getAttribute("usuario");%>
@@ -25,10 +26,10 @@
                            <div class="panel-body">
 
                             <ul class="nav nav-pills nav-stacked">
-                            	<li class="active">
+                            	<li>
                                     <a href="micuenta"><i class="fa fa-user"></i>Mi Cuenta</a>
                                 </li>
-                                <li>
+                                <li class="active">
                                     <a href="listarReservas"><i class="fa fa-list"></i>Mis Reservas</a>
                                 </li>
                                
@@ -44,13 +45,29 @@
                 </div>
 
                 <div class="col-md-9" id="customer-order">
+                    <c:if test="${not empty listar}">
+                    <c:forEach var="listar" items="${listar}">
                     <div class="box">
-                        <h1>Reserva #1735</h1>
+                        <h1>Reserva #${listar.idAlquiler}</h1>
 
-                        <p class="lead">La reserva #173 es del <strong>22/06/2013</strong> hasta el <strong>25/06/2013</strong> y actualemente esta <strong>en entrega</strong>.</p>
+                        <p class="lead">
+                         La reserva # ${listar.idAlquiler} es del <strong><fmt:formatDate value="${listar.fechaSalida}" pattern="dd/MM/yyyy hh:mm"/></strong>
+                         hasta el <strong><fmt:formatDate value="${listar.fechaRetorno}" pattern="dd/MM/yyyy hh:mm"/></strong> y actualmente esta 
+                         <c:if test="${listar.estado==0}">
+	                     <span class="label label-danger">Eliminado</span>
+	                     </c:if>
+	                     <c:if test="${listar.estado==1}">
+	                     <span class="label label-info">Pendiente</span>
+	                     </c:if>
+	                     <c:if test="${listar.estado==2}">
+	                     <span class="label label-success">Pagado</span>
+	                     </c:if>.
+	                     </p>
+	                     <p><label style="color: red;">*</label><strong>Incluido IGV</strong></p>
                      
                         <hr>
-
+                        <h3>Detalle de Alquiler</h3>
+                        
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -62,26 +79,30 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                    	<fmt:formatDate var="fechaR" value="${listar.fechaSalida}" pattern="dd" />
+                                    	<fmt:formatDate var="fechaS" value="${listar.fechaRetorno}" pattern="dd" />
                                         <td>Vehículo</td>
-                                        <td>S/. 128.64</td>
+                                        <td>S/. ${listar.auto.precioDia*(fechaS-fechaR)} <label style="color: red;">*</label></td>
                                     </tr>
+                                    <c:forEach var="listardet" items="${listardet}">
                                     <tr>
-                                        <td>Cobertura y Opciones</td>
-                                        <td>S/. 41.00</td>
+                                        <td>${listardet.getRequerimientoEspecial().getNombre()}</td>
+                                        <td>S/. ${listardet.getPrecioTotal() } <label style="color: red;">*</label></td>
                                     </tr>
+                                    </c:forEach>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th colspan="1" class="text-right">subtotal</th>
-                                        <th>S/.169.00</th>
+                                        <th>S/. ${listar.montoAPagar-(listar.montoAPagar*18/100)}</th>
                                     </tr>
                                     <tr>
                                         <th colspan="1" class="text-right">IGV 18%</th>
-                                        <th>S/.35.00</th>
+                                        <th>S/. ${listar.montoAPagar*18/100}</th>
                                     </tr>
                                     <tr>
                                         <th colspan="1" class="text-right">Total</th>
-                                        <th>S/.204.84</th>
+                                        <th>S/. ${listar.montoAPagar}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -92,28 +113,34 @@
                         <div class="row ">
                             <div class="col-md-6 col-sm-6">
                                 <h2>Lugar de Recojo</h2>
-                                <p>SEDE: AEROPUERTO JORGE CHAVEZ
-                                    <br>Ubicación: Callao
-                                    <br>Departamento: Lima
+                                <p>SEDE: ${listar.sede1.sede}
+                                <br>Ubicación: ${listar.sede1.ubicacion}
+                                <br>Departamento: Lima
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <h2>Lugar de Retorno</h2>
-                                <p>SEDE: AEROPUERTO JORGE CHAVEZ
-                                    <br>Ubicación: Callao
-                                    <br>Departamento: Lima
+                                <p>SEDE: ${listar.sede2.sede}
+                                <br>Ubicación: ${listar.sede2.ubicacion}
+                                <br>Departamento: Lima
                             </div>
                             
                             
                         </div>
                         
+                        <c:if test="${listar.estado!=0}">
+                        <div id="dialog" title="Se requiere una confirmación">
+						  ¿Está seguro de cancelar su reserva? Luego no podrá deshacer esta acción.
+						</div>
                         <div class="row ">
                         	<div class="col-md-12" align="right">
                         	
-                                <button type="submit"  class="btn btn-primary" style="margin-top:30px;">Cancelar Reserva</button>
+                                <a href="cancelarreserva?idAlquiler=${listar.idAlquiler}" type="button" class="btn btn-primary confirmar" style="margin-top:30px;">Cancelar Reserva</a>
                             </div>
                        	</div>
-
+                       	</c:if>
                     </div>
+                    </c:forEach>
+                    </c:if>
                 </div>
 
             </div>
@@ -132,7 +159,33 @@
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+	<script>
+	$(document).ready(function() {
+	    $("#dialog").dialog({
+	      autoOpen: false,
+	      modal: true
+	    });
+	  });
 
+	  $(".confirmar").click(function(e) {
+	    e.preventDefault();
+	    var targetUrl = $(this).attr("href");
+
+	    $("#dialog").dialog({
+	      buttons : {
+	        "Aceptar" : function() {
+	          window.location.href = targetUrl;
+	        },
+	        "Cancelar" : function() {
+	          $(this).dialog("close");
+	        }
+	      }
+	    });
+
+	    $("#dialog").dialog("open");
+	  });
+	</script>
 </body>
 
 </html>

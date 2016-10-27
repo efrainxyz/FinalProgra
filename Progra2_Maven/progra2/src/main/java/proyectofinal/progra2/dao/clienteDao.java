@@ -1,5 +1,6 @@
 package proyectofinal.progra2.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Repository;
 
 import proyectofinal.progra2.bean.Alquiler;
 import proyectofinal.progra2.bean.Alquilerxrequerimiento;
+import proyectofinal.progra2.bean.Auto;
+import proyectofinal.progra2.bean.ModeloAuto;
 import proyectofinal.progra2.bean.Persona;
 import proyectofinal.progra2.interfaz.I_Cliente;
 
@@ -59,7 +62,22 @@ public class clienteDao implements I_Cliente {
 	@Override
 	public List<Alquilerxrequerimiento> listarDetalleAlquiler(int idAlquiler) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Alquilerxrequerimiento>listar= new ArrayList<Alquilerxrequerimiento>();
+		try {
+			
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em= emf.createEntityManager();
+			TypedQuery<Alquilerxrequerimiento> query=em.createQuery("SELECT a FROM Alquilerxrequerimiento a where a.id.alquilerIdAlquiler = :valor1",Alquilerxrequerimiento.class);
+			query.setParameter("valor1",idAlquiler);
+			
+			listar= query.getResultList();
+			
+		} catch (Exception e) {
+		 System.out.println("Error en el dao listarDetalleAlquiler: "+e.getMessage());
+		 e.printStackTrace();
+		}
+		
+		return listar;
 	}
 
 	@Override
@@ -83,6 +101,49 @@ public class clienteDao implements I_Cliente {
 		} catch (Exception e) {
 			System.out.print("error en cliente dao actualizar datos personales "+e.getMessage());
 		}	
+		return resultado;
+	}
+
+	@Override
+	public List<Alquiler> listarAlquilerxCodigo(int codigo) {
+		// TODO Auto-generated method stub
+		List<Alquiler> listar= new ArrayList<Alquiler>();
+		try {
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em= emf.createEntityManager();
+			
+			TypedQuery<Alquiler> query=em.createQuery("Select a From Alquiler a,Persona p  Where p=a.persona and a.idAlquiler = :valor1",Alquiler.class);
+			query.setParameter("valor1", codigo);
+					
+			listar= query.getResultList();
+			
+		} catch (Exception e) {
+			
+			System.out.println("Error listarAlquiler: "+e.getMessage());
+		
+		}
+				
+			return listar;
+	}
+
+	@Override
+	public int cancelarReserva(int idAlquiler) throws Exception {
+		// TODO Auto-generated method stub
+		int resultado =0;
+		try {
+					
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em= emf.createEntityManager();
+			em.getTransaction().begin();
+			Alquiler alquiler=em.find(Alquiler.class, idAlquiler);
+			alquiler.setEstado("0");
+			em.merge(alquiler);
+			em.getTransaction().commit();
+			em.close();
+			resultado=1;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		return resultado;
 	}
 

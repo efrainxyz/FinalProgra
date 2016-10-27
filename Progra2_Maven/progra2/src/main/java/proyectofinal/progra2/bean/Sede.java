@@ -19,6 +19,8 @@ public class Sede implements Serializable {
 	private int idSede;
 
 	private String sede;
+	
+	private String ubicacion;
 
 	//bi-directional many-to-one association to Alquiler
 	@OneToMany(mappedBy="sede1")
@@ -116,5 +118,15 @@ public class Sede implements Serializable {
 
 		return auto;
 	}
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+	
+	
 
 }
