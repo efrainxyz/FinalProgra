@@ -80,7 +80,7 @@ public class AdministradorController {
 					System.out.println(criterioBusqueda+"\n\n"+criterio);
 					
 					if(criterio.equals("1")){ //Se ingreso dni
-						listar= dao1.listarAlquilerxCliente(criterioBusqueda);
+						listar= dao.listarAlquilerxClienteRegistrarPago(criterioBusqueda);
 					} else{ //Se ingreso codigo de reserva
 						int codigoReserva = Integer.parseInt(criterioBusqueda);
 						listar = dao.listarAlquilerRegistrarPago(codigoReserva);
@@ -90,7 +90,7 @@ public class AdministradorController {
 					if(listar.size()>0){
 						model.addObject("listar",listar);
 					} else{
-						model.addObject("mensaje","No se encontraron alquileres con ese criterio.");
+						model.addObject("mensaje","No se encontraron alquileres pendiente de pago con este criterio.");
 					}
 					model.setViewName("/administrador/Administrador_buscaralquiler");	
 				}
@@ -110,6 +110,7 @@ public class AdministradorController {
 				if(user.getRol().getNombre().equals("administrador")){
 					
 					int resultado=0;
+					int resultado2=0;
 					int resVerificacion=0;
 					DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 					Date date = new Date();
@@ -124,6 +125,8 @@ public class AdministradorController {
 					} else{
 					
 						resultado= dao.registrarPago(pago);
+						resultado2=dao.actualizarEstadoxPago(alquiler.getIdAlquiler());
+						
 						System.out.println(resultado);
 						if(resultado==1){
 							model.addObject("mensaje","Éxito en el registro del pago.");

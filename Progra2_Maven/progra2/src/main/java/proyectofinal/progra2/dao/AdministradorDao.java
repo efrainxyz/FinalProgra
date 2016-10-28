@@ -25,7 +25,7 @@ public class AdministradorDao implements I_Administrador {
 			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
 			EntityManager em= emf.createEntityManager();
 			
-			TypedQuery<Alquiler> query=em.createQuery("Select a From Alquiler a,Persona p  Where p=a.persona and a.idAlquiler = :valor1",Alquiler.class);
+			TypedQuery<Alquiler> query=em.createQuery("Select a From Alquiler a,Persona p  Where a.estado=1 And p=a.persona and a.idAlquiler = :valor1",Alquiler.class);
 			query.setParameter("valor1", codigo);
 			
 			listar= query.getResultList();
@@ -81,6 +81,44 @@ public class AdministradorDao implements I_Administrador {
 		} catch (Exception e) {
 		 System.out.println("Error listarAlquiler: "+e.getMessage());
 		
+		}
+		return resultado;
+	}
+
+	@Override
+	public List<Alquiler> listarAlquilerxClienteRegistrarPago(String dni) {
+		List<Alquiler> lista=null;
+		try {
+			EntityManagerFactory emf=Persistence.createEntityManagerFactory("progra2");
+			EntityManager em=emf.createEntityManager();
+												
+			TypedQuery<Alquiler> sql=em.createQuery("Select a From Alquiler a,Persona p  Where a.estado=1 And p=a.persona and p.dni = :valor1",Alquiler.class);
+			sql.setParameter("valor1",dni);
+			lista=sql.getResultList();
+			
+		} catch (Exception e) {
+			System.out.println("ERROR LISTAR ALQUILER X CLIENTE "+e.getMessage());
+		}
+	return lista;
+	}
+
+	@Override
+	public int actualizarEstadoxPago(int codigo) {
+		// TODO Auto-generated method stub
+		int resultado =0;
+		try {
+							
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em= emf.createEntityManager();
+			em.getTransaction().begin();
+			Alquiler alquiler=em.find(Alquiler.class, codigo);
+			alquiler.setEstado("2");
+			em.merge(alquiler);
+			em.getTransaction().commit();
+			em.close();
+			resultado=1;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 		return resultado;
 	}

@@ -12,4 +12,6 @@ public interface I_Administrador {
 	public List<Alquiler> listarAlquilerRegistrarPago(int codigo);
 	public int registrarPago(Pago pago);
 	public int verificarPago(Alquiler alquiler);
+	public List<Alquiler> listarAlquilerxClienteRegistrarPago(String dni);
+	public int actualizarEstadoxPago(int codigo);
 }
