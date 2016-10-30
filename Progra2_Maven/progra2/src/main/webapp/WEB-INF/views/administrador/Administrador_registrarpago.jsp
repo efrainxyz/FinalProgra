@@ -133,7 +133,7 @@
 	                            </div>
 	                            <div class="col-sm-12">
 	                            	<div class="form-group pull-right">
-		                            	<button type="button" onclick="calcularVuelto();" class="btn btn-primary">Calcular</button>
+		                            	<button type="button" onclick="return calcularVuelto();" class="btn btn-primary">Calcular</button>
 	                            	</div>
 	                            </div>
 	                            
@@ -145,7 +145,7 @@
                                     <a href="Administrador_paginaprincipal.jsp" class="btn btn-default"><i class="fa fa-chevron-left"></i>Cancelar</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary">Registrar Pago
+                                    <button type="submit" onclick="return verificarRegPago();" class="btn btn-primary">Registrar Pago
                                     </button>
                                 </div>
                         </div>
@@ -167,21 +167,22 @@
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap-hover-dropdown.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/front.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
 	<script>
 	function calcularVuelto(){
-		var montoIn= parseInt($("#montoIngresar").val());
-		var montoPa= parseInt($("#montoPagar").val());
+		var montoIn= parseFloat($("#montoIngresar").val());
+		var montoPa= parseFloat($("#montoPagar").val());
 		var vueltoPago=0;
 		
-		if(montoPa==""){
-			alert("Primero debe realizar la búsqueda de su alquiler.");
-		} else if (montoIn==""){
-			alert("Por favor ingrese un valor a Monto a Ingresar.");
+		if(isNaN(montoPa)){
+			custom_alert("Primero debe realizar la búsqueda de su alquiler.", "Alerta");
+		} else if (isNaN(montoIn)){
+			custom_alert("Por favor ingrese un valor a Monto a Ingresar.", "Alerta");
 		} else if (montoPa>montoIn){
-			alert("El monto a Ingresar debe ser mayor o igual al monto a Pagar.");
+			custom_alert("El monto a Ingresar debe ser mayor o igual al monto a Pagar.", "Alerta");
 		} else {
 			vueltoPago= montoIn - montoPa;
-			$("#vuelto").attr("value",parseInt(vueltoPago));
+			$("#vuelto").attr("value",parseFloat(vueltoPago).toFixed(2));
 		}
 	}
 	</script>
@@ -193,12 +194,37 @@
 		console.log(criterio);
 		
 		if(tipoCriterio==1){
-			if(criterio.length<8 || criterio.length>8){
-				alert("El DNI debe tener 8 caracteres.")
+			if(criterio.length<8 || criterio.length>8){				
+				custom_alert("El DNI debe tener 8 dígitos.", "Alerta");
 				return false;
 			}
 			
 		} 
+		return true;
+	}
+	</script>
+	<script>
+	function verificarRegPago(){
+		console.log("llega?")
+		var codAlquiler= $("#codRe").val();
+		var montoIn= $("#montoIngresar").val();
+		var montoPa= $("#montoPagar").val();
+		var vuelto= $("#vuelto").val();
+		console.log(codAlquiler);
+		console.log(montoIn)
+		console.log(montoPa)
+		
+		if(codAlquiler==""){
+			custom_alert("Usted debe buscar su alquiler y luego calcular su pago.", "Alerta");
+			return false;			
+		}  else if (montoIn==""){
+			custom_alert("Usted debe ingresar su monto a pagar y calcular el pago.", "Alerta");
+			return false;		
+		} else if (montoPa=="" || vuelto==""){
+			custom_alert("Por favor calcule el pago.", "Alerta");
+			return false;		
+		}
+	
 		return true;
 	}
 	</script>
@@ -210,6 +236,29 @@
 	        return false;
 	    }
 	    return true;
+	}
+	</script>
+	<!-- Metodo reutilizable para alertas con JQUERYUI -->
+	<script> 
+	function custom_alert(output_msg, title_msg)
+	{
+	    if (!title_msg)
+	        title_msg = 'Alert';
+
+	    if (!output_msg)
+	        output_msg = 'No Message to Display.';
+
+	    $("<div></div>").html(output_msg).dialog({
+	        title: title_msg,
+	        resizable: false,
+	        modal: true,
+	        buttons: {
+	            "Ok": function() 
+	            {
+	                $( this ).dialog( "close" );
+	            }
+	        }
+	    });
 	}
 	</script>
 </body>

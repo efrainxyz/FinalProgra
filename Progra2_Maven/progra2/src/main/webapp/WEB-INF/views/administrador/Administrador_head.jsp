@@ -38,6 +38,8 @@
 	<link href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/resources/img/favicon.jpg">
+	<!-- Jquery UI -->
+	<link href="<%=request.getContextPath()%>/resources/css/jquery-ui.min.css" rel="stylesheet">
 
 
 
