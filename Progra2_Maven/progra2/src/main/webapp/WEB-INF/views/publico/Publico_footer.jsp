@@ -13,7 +13,7 @@
                             
                         </p>
 
-                        <a href="contact.html">Ir a la pagina de contactos</a>
+                        <a href="contactenos">Ir a la pagina de contactos</a>
 
                         <hr class="hidden-md hidden-lg">
 

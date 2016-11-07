@@ -12,7 +12,7 @@
                         
                         </p>
 
-                        <a href="Cliente_contactenos.jsp">Ir a la pagina de contactos</a>
+                        <a href="contactarcli">Ir a la pagina de contactos</a>
 
                         <hr class="hidden-md hidden-lg">
 

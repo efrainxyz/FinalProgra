@@ -1,8 +1,5 @@
 package proyectofinal.progra2.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -10,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
+import proyectofinal.progra2.bean.Consulta;
 import proyectofinal.progra2.bean.Persona;
 import proyectofinal.progra2.interfaz.I_Persona;
 
@@ -154,6 +152,27 @@ public class personaDao implements I_Persona {
 			return null;
 		}
 		return persona;
+	}
+
+
+	@Override
+	public int agregarConsulta(Consulta consulta) throws Exception {
+		// TODO Auto-generated method stub
+		int respuesta=0;
+		try {
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em=emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(consulta);
+			em.getTransaction().commit();
+			em.close();
+			respuesta=1;
+			
+		} catch (Exception e) {
+			System.out.println("Error metodo agregarConsulta: "+e.getMessage());
+		}
+		
+		return respuesta;
 	}
 		
 

@@ -19,8 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
+import proyectofinal.progra2.bean.Consulta;
 import proyectofinal.progra2.bean.Persona;
 import proyectofinal.progra2.bean.Rol;
 import proyectofinal.progra2.dao.personaDao;
@@ -139,7 +138,7 @@ public class PersonaController {
 		return  model;
 	}
 	
-/** METODO PARA RECUPERAR CONTRASEÑA **/	
+	/** METODO PARA RECUPERAR CONTRASEÑA **/	
 	
 	@RequestMapping(value="/recuperarContrasena")
 	public ModelAndView recuperarContrasena(HttpServletResponse response,HttpServletRequest request) throws IOException{
@@ -206,4 +205,66 @@ public class PersonaController {
 	
 	/** FIN RECUPERAR CONTRASEÑA**/	
 	
+	@RequestMapping(value="/registrarConsulta")
+	public ModelAndView registrarConsulta(HttpServletResponse response,HttpServletRequest request, Consulta consulta) throws IOException{
+		ModelAndView model = new ModelAndView();
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("usuario");
+		
+		try {
+			consulta.setEstado("0");
+			if(user!=null){
+				consulta.setPersona(user);
+			} else{
+				Persona persona = new Persona();
+				persona.setDni("00000000");
+				consulta.setPersona(persona);
+			}
+			
+			int respuesta=dao.agregarConsulta(consulta);
+			
+			if(respuesta!=0){
+				model.addObject("mensaje","Su consulta se registró satisfactoriamente."
+				+ " Por favor espere la respuesta, se le enviará en el correo proporcionado.");
+			} else {
+				model.addObject("mensaje2","Hubo un error en el registro de su consulta. Por favor intente de nuevo.");
+			}
+			if(user!=null){
+				Persona persona = dao.listar(user.getDni());
+				model.addObject("lista",persona);
+				model.setViewName("/cliente/Cliente_contactenos");
+			} else{
+				model.setViewName("/publico/Publico_contactenos");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return model;
+	}
+	
+	@RequestMapping(value="/contactarcli")
+	public ModelAndView contactarcli(HttpServletResponse response,HttpServletRequest request, Consulta consulta) throws IOException{
+		ModelAndView model = new ModelAndView();
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("usuario");
+			if(user!=null){
+				if(user.getRol().getNombre().equals("cliente")){
+					try {
+						Persona persona = dao.listar(user.getDni());
+						model.addObject("lista",persona);
+						model.setViewName("/cliente/Cliente_contactenos");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}else{
+				model.addObject("mensaje","Su sesion ha expirado, intente de nuevo.");
+				model.setViewName("/publico/Publico_paginaprincipal");
+			}
+			
+		return model;
+	}
 }

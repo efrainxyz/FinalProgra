@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import proyectofinal.progra2.bean.Consulta;
 import proyectofinal.progra2.bean.Persona;
 
 @Service
@@ -13,4 +14,5 @@ public interface I_Persona {
 	public int  buscarCorreo(String correo);
 	public int buscarDni(String dni) throws Exception;
 	public Persona recuperarContrasena(String correo) throws Exception;
+	public int agregarConsulta(Consulta consulta) throws Exception;
 }
