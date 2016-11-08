@@ -13,12 +13,14 @@ import javax.servlet.http.HttpSession;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proyectofinal.progra2.bean.Alquiler;
+import proyectofinal.progra2.bean.Consulta;
 import proyectofinal.progra2.bean.Pago;
 import proyectofinal.progra2.bean.Persona;
 import proyectofinal.progra2.dao.AdministradorDao;
@@ -116,7 +118,7 @@ public class AdministradorController {
 					Date date = new Date();
 					
 					pago.setAlquiler(alquiler);
-					pago.setFechaPago(dateFormat.format(date));
+					//pago.setFechaPago(dateFormat.format(date));
 					
 					resVerificacion=dao.verificarPago(pago.getAlquiler()); //verifico si ya fue pagado(1) o no(0)
 					
@@ -136,6 +138,24 @@ public class AdministradorController {
 		
 					}
 					model.setViewName("/administrador/Administrador_registrarpago");
+				}
+			}else{
+				model.addObject("mensaje","Su sesion ha expirado, intente de nuevo.");
+				model.setViewName("/publico/Publico_paginaprincipal");
+			}
+		return  model;
+	}
+	
+	@RequestMapping(value="/vercomysug")
+	public ModelAndView vercomysug(HttpServletResponse response,HttpServletRequest request) throws IOException{
+		ModelAndView model = new ModelAndView();
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("usuario");
+			if(user!=null){
+				if(user.getRol().getNombre().equals("administrador")){
+					List<Consulta> listar= dao.listarconsulta();
+					model.addObject("listarjsp",listar);
+					model.setViewName("/administrador/Administrador_vercomentariosysugerencia");	
 				}
 			}else{
 				model.addObject("mensaje","Su sesion ha expirado, intente de nuevo.");

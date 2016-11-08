@@ -227,8 +227,45 @@ public class ClienteController {
 	
 	
 	@RequestMapping(value="reserva1")
-	public ModelAndView reserva1(HttpServletResponse response) throws IOException{
-		return new ModelAndView("/cliente/Cliente_generarreserva1");
+	public ModelAndView reserva1(HttpServletResponse response,HttpServletRequest request) throws IOException{
+		ModelAndView model=new ModelAndView();
+		
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("usuario");
+			if(user!=null){
+				if(user.getRol().getNombre().equals("cliente")){
+					try {
+						List<TipoViajeAuto>listar1=dao3.listarTipoviajeauto();
+						List<Auto> listar= dao3.listarAutos();
+
+						//Para obtener el precio y funcione con el slider
+						List<Integer> precio= new ArrayList<Integer>();
+						
+						for (int i = 0; i < listar.size(); i++) {
+							precio.add(Integer.valueOf(listar.get(i).getPrecioDia().intValue()));
+							
+						}
+						model.addObject("precioAuto",precio);
+						System.out.println(precio);
+						//fin 
+						
+						model.addObject("listarjsp", listar);
+						model.addObject("listartipoviaje",listar1);
+						
+						model.setViewName("/cliente/Cliente_generarreserva1");
+						
+					} catch (Exception e) {
+						System.out.print(e.getMessage());
+					}
+				}
+			}else{
+				model.addObject("mensaje","Su sesion ha expirado, por favor ingrese de nuevo.");
+				model.setViewName("/publico/Publico_paginaprincipal");
+			}
+		
+		
+		return model;
+
 	}
 	
 	@RequestMapping(value="reserva2")

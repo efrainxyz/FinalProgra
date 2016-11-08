@@ -44,6 +44,51 @@
     <link href="<%=request.getContextPath()%>/resources/css/slider.css" rel="stylesheet">
 	<!-- Jquery UI -->
 	<link href="<%=request.getContextPath()%>/resources/css/jquery-ui.min.css" rel="stylesheet">
+	<style type="text/css">
+	
+	* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ 
+body {
+    font-size: 16px;
+    background: #fff;
+    font-family: "Roboto";
+}
+ 
+.wrap {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 20px;
+    /*margin: auto;*/
+}
+ 
+.formulario h2 {
+    font-size: 16px;
+    color: #001F3F;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+ 
+.formulario > div {
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.formulario input[type="radio"]:checked + label:before {
+      display: none; }
+    .formulario input[type="radio"]:checked + label {
+      padding: 5px 15px;
+      background: #FF4136;
+      border-radius: 2px;
+      color: #fff; }
+	
+	
+	</style>
 
 </head>
 <div id="top">
@@ -54,7 +99,7 @@
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
                <ul class="menu">
-                    <li><h4 style="color:white;font-size:14px;">Bienvenido : <%=user.getRol().getNombre()%></h4></li>
+                    <li><h4 style="color:white;font-size:14px;">Bienvenido : <%=user.getNombre()+","+user.getApellidoPaterno()+" "+user.getApellidoMaterno() %></h4></li>
                     <li><a href="<%=request.getContextPath()%>/Logout">Cerrar Sesión</a>
                     </li>
                 </ul>

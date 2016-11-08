@@ -82,9 +82,8 @@
 
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="listarauto">Mantener Auto</a></li>
-                  	<li><a href="vistaregpago">Registrar Pago</a>
-                      
-                    </li>
+                  	<li><a href="vistaregpago">Registrar Pago</a></li>
+                  	<li><a href="vercomysug">Ver comentario y sugerencias</a></li>
                 </ul>
 
             </div>

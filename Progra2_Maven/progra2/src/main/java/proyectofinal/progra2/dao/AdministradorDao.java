@@ -1,7 +1,6 @@
 package proyectofinal.progra2.dao;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,6 +11,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import proyectofinal.progra2.bean.Alquiler;
+import proyectofinal.progra2.bean.Consulta;
 import proyectofinal.progra2.bean.Pago;
 import proyectofinal.progra2.interfaz.I_Administrador;
 @Repository
@@ -121,6 +121,25 @@ public class AdministradorDao implements I_Administrador {
 			System.out.println(e.getMessage());
 		}
 		return resultado;
+	}
+
+	@Override
+	public List<Consulta> listarconsulta() {
+		List<Consulta> listar= new ArrayList<Consulta>();
+		try {
+			EntityManagerFactory emf= Persistence.createEntityManagerFactory("progra2");
+			EntityManager em= emf.createEntityManager();
+			
+			TypedQuery<Consulta> query=em.createQuery("Select a From Consulta a Where a.estado=1",Consulta.class);				
+			
+			listar= query.getResultList();
+			
+		} catch (Exception e) {
+		 System.out.println("Error listar consulta: "+e.getMessage());
+		
+		}
+		
+		return listar;
 	}
 
 }

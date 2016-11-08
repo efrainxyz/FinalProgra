@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import proyectofinal.progra2.bean.Alquiler;
+import proyectofinal.progra2.bean.Consulta;
 import proyectofinal.progra2.bean.Pago;
 
 @Service
@@ -14,4 +15,5 @@ public interface I_Administrador {
 	public int verificarPago(Alquiler alquiler);
 	public List<Alquiler> listarAlquilerxClienteRegistrarPago(String dni);
 	public int actualizarEstadoxPago(int codigo);
+	public List<Consulta> listarconsulta();
 }
